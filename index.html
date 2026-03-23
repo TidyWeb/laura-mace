@@ -1035,6 +1035,48 @@
         text-align: center;
       }
     }
+
+    @media (max-width: 768px) {
+
+      /* Hero and Vision rows stacking */
+      .two-col,
+      .vision-row {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+        margin-bottom: 60px !important;
+      }
+
+      /* Ensure text comes before images in stacked vision rows */
+      .vision-row:nth-child(even) .vision-text {
+        order: 1 !important;
+      }
+
+      .vision-row:nth-child(even) .vision-image {
+        order: 2 !important;
+      }
+
+      /* Cards stacking (What Laura Does) */
+      .cards-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+      }
+
+      /* Partners/Sponsors grid stacking */
+      .logo-grid {
+        grid-template-columns: 1fr 1fr !important;
+        /* Shows 2 logos per row on mobile instead of 4 */
+        gap: 20px !important;
+      }
+
+      /* Text adjustment for smaller screens */
+      .vision-text h3 {
+        font-size: 1.8rem !important;
+      }
+
+      .section-heading {
+        font-size: 2.2rem !important;
+      }
+    }
   </style>
 </head>
 
@@ -1111,7 +1153,7 @@
 
           <div class="creds-grid">
             <div class="cred-item">BSc (Hons) Counselling &amp; Psychotherapy</div>
-            <div class="cred-item">Master's in Psychology (in progress)</div>
+            <div class="cred-item">Master's in Psychology (1st Class Distinction)</div>
             <div class="cred-item">BACP Registered Member</div>
             <div class="cred-item">Level 3 Designated Safeguarding Lead</div>
           </div>
@@ -1258,8 +1300,11 @@
         </div>
       </div>
 
-      <img class="impact-photo reveal" src="CitizenAward.jpg" alt="Citizens Awards ceremony — Laura Mace"
-        onerror="this.outerHTML='<div class=\'impact-photo-placeholder reveal\'>📷 Citizens Awards ceremony photo</div>'">
+      <a href="https://www.westmidlands-pcc.gov.uk/everyday-heroes-recognised-for-extraordinary-acts-at-pccs-outstanding-citizens-awards-2025/"
+        target="_blank" rel="noopener">
+        <img class="impact-photo reveal" src="CitizenAward.jpg" alt="Citizens Awards ceremony — Laura Mace"
+          onerror="this.outerHTML='<div class=\'impact-photo-placeholder reveal\'>📷 Citizens Awards ceremony photo</div>'">
+      </a>
     </div>
   </section>
 
@@ -1306,7 +1351,8 @@
           <p>We have identified Eagle Court in Birmingham as the ideal catalyst for this change. This multi-floor
             facility
             will be transformed into a holistic ecosystem: a creative basement for music and arts rehearsal; a
-            ground-floor gymnasium and sports hall for 5-a-side, netball, and basketball; and upper-level professional
+            ground-floor gymnasium and sports hall for 5-a-side football, netball, and basketball; and upper-level
+            professional
             therapy suites designed for quiet recovery, collective learning, and communal support.</p>
         </div>
       </div>

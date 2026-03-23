@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laura Mace — ALIVE Wellness Centre CIC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal:       #1a5c5c;
+    --teal-dark:  #0f3c3c;
+    --teal-light: #e8f4f4;
+    --amber:      #e8a020;
+    --amber-dark: #b87a10;
+    --charcoal:   #1c1c1c;
+    --off-white:  #f9f6f1;
+    --mid-grey:   #6b6b6b;
+    --border:     rgba(26,92,92,0.15);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--charcoal);
+    background: var(--off-white);
+    overflow-x: hidden;
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ─────────────────────────────────────────
+     SECTION 1 — HERO
+  ───────────────────────────────────────── */
+  #hero {
+    min-height: 100vh;
+    background: var(--teal-dark);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 70% 50%, rgba(232,160,32,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(26,92,92,0.6) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-text {
+    padding: 80px 60px 80px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 2px;
+    background: var(--amber);
+  }
+
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 5vw, 5rem);
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1.0;
+    margin-bottom: 16px;
+  }
+
+  .hero-name span {
+    color: var(--amber);
+  }
+
+  .hero-title {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: clamp(1rem, 1.4vw, 1.2rem);
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 440px;
+  }
+
+  .hero-mission {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+    color: rgba(255,255,255,0.9);
+    line-height: 1.4;
+    padding-left: 20px;
+    border-left: 3px solid var(--amber);
+    margin-bottom: 48px;
+    max-width: 420px;
+  }
+
+  .hero-creds {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .cred-pill {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.8);
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 100px;
+    letter-spacing: 0.03em;
+  }
+
+  .hero-image-col {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-photo-frame {
+    position: relative;
+    width: 420px;
+    max-width: 90%;
+  }
+
+  .hero-photo-frame::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: 20px;
+    bottom: 20px;
+    border: 2px solid rgba(232,160,32,0.3);
+    border-radius: 4px;
+    z-index: 0;
+  }
+
+  .hero-photo-frame img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: 4px;
+    display: block;
+  }
+
+  .hero-photo-placeholder {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    aspect-ratio: 1;
+    background: rgba(255,255,255,0.06);
+    border: 2px dashed rgba(255,255,255,0.2);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.85rem;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .hero-badge {
+    position: absolute;
+    bottom: -16px;
+    left: -24px;
+    background: var(--amber);
+    color: var(--charcoal);
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 10px 18px;
+    border-radius: 2px;
+    z-index: 2;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 80px;
+    color: rgba(255,255,255,0.3);
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 2;
+  }
+
+  .scroll-hint::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  /* ─────────────────────────────────────────
+     SECTION 2 — HER STORY
+  ───────────────────────────────────────── */
+  #story {
+    background: #ffffff;
+    padding: 100px 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--teal);
+  }
+
+  .section-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700;
+    color: var(--charcoal);
+    line-height: 1.15;
+    margin-bottom: 32px;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .story-image {
+    position: relative;
+  }
+
+  .story-image img,
+  .story-image .img-placeholder {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+  }
+
+  .img-placeholder {
+    background: var(--teal-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--teal);
+    font-size: 0.85rem;
+    text-align: center;
+    padding: 20px;
+    border: 2px dashed var(--border);
+  }
+
+  .story-image::after {
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    right: -16px;
+    width: 60%;
+    height: 60%;
+    background: var(--teal-light);
+    z-index: -1;
+    border-radius: 4px;
+  }
+
+  .story-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #3a3a3a;
+    margin-bottom: 20px;
+  }
+
+  .story-text p strong {
+    color: var(--teal-dark);
+  }
+
+  .creds-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 32px;
+  }
+
+  .cred-item {
+    background: var(--teal-light);
+    border-left: 3px solid var(--teal);
+    padding: 10px 14px;
+    border-radius: 0 4px 4px 0;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--teal-dark);
+    line-height: 1.4;
+  }
+
+  /* ─────────────────────────────────────────
+     SECTION 3 — WHAT SHE DOES
+  ───────────────────────────────────────── */
+  #what {
+    background: var(--teal-dark);
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #what::after {
+    content: 'ALIVE';
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 20vw;
+    font-weight: 900;
+    color: rgba(255,255,255,0.03);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  #what .section-label { color: var(--amber); }
+  #what .section-label::before { background: var(--amber); }
+  #what .section-heading { color: #ffffff; }
+
+  .what-intro {
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.7;
+    max-width: 600px;
+    margin-bottom: 60px;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+
+  .service-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    padding: 36px 28px;
+    transition: background 0.3s ease, border-color 0.3s ease;
+  }
+
+  .service-card:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(232,160,32,0.4);
+  }
+
+  .card-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: rgba(232,160,32,0.25);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+
+  .card-body {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+  }
+
+  .what-photo {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    object-position: center 30%;
+    border-radius: 4px;
+    display: block;
+  }
+
+  .what-photo-placeholder {
+    width: 100%;
+    height: 320px;
+    background: rgba(255,255,255,0.05);
+    border: 2px dashed rgba(255,255,255,0.15);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.3);
+    font-size: 0.85rem;
+  }
+
+  /* ─────────────────────────────────────────
+     SECTION 4 — IMPACT
+  ───────────────────────────────────────── */
+  #impact {
+    background: var(--off-white);
+    padding: 100px 0;
+  }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 60px;
+  }
+
+  .stat-block {
+    padding: 48px 40px;
+    border-right: 1px solid var(--border);
+    background: #ffffff;
+  }
+
+  .stat-block:last-child { border-right: none; }
+
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+    font-weight: 900;
+    color: var(--teal);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  .stat-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--mid-grey);
+    line-height: 1.5;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .awards-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+
+  .award-card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 36px;
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+
+  .award-icon {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    background: var(--amber);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+  }
+
+  .award-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+
+  .award-body p {
+    font-size: 0.9rem;
+    color: var(--mid-grey);
+    line-height: 1.6;
+  }
+
+  .award-logo {
+    max-height: 44px;
+    max-width: 140px;
+    object-fit: contain;
+    margin-top: 14px;
+    display: block;
+  }
+
+  .impact-photo {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    object-position: center 25%;
+    border-radius: 4px;
+    display: block;
+  }
+
+  .impact-photo-placeholder {
+    width: 100%;
+    height: 400px;
+    background: var(--teal-light);
+    border: 2px dashed var(--border);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--teal);
+    font-size: 0.9rem;
+  }
+
+  /* ─────────────────────────────────────────
+     SECTION 5 — PARTNERS
+  ───────────────────────────────────────── */
+  #partners {
+    background: #ffffff;
+    padding: 80px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  #partners .section-heading {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .logo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .logo-cell {
+    background: #ffffff;
+    padding: 32px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100px;
+    transition: background 0.2s;
+  }
+
+  .logo-cell:hover { background: var(--teal-light); }
+
+  .logo-cell img {
+    max-height: 48px;
+    max-width: 140px;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: filter 0.2s, opacity 0.2s;
+  }
+
+  .logo-cell:hover img {
+    filter: none;
+    opacity: 1;
+  }
+
+  .logo-text {
+    font-weight: 500;
+    font-size: 0.8rem;
+    color: var(--mid-grey);
+    text-align: center;
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+  }
+
+  /* ─────────────────────────────────────────
+     SECTION 6 — PRESS / MEDIA
+  ───────────────────────────────────────── */
+  #press {
+    background: var(--off-white);
+    padding: 100px 0;
+  }
+
+  .press-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .press-card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+  }
+
+  .press-card:hover {
+    box-shadow: 0 8px 40px rgba(26,92,92,0.12);
+  }
+
+  .press-thumb {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    background: var(--teal-light);
+  }
+
+  .press-thumb-placeholder {
+    width: 100%;
+    height: 200px;
+    background: var(--teal-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.85rem;
+  }
+
+  .press-content {
+    padding: 28px;
+  }
+
+  .press-source {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 10px;
+  }
+
+  .press-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .press-content p {
+    font-size: 0.88rem;
+    color: var(--mid-grey);
+    line-height: 1.6;
+  }
+
+  .video-badge {
+    display: inline-block;
+    background: var(--amber);
+    color: var(--charcoal);
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+  }
+
+  /* ─────────────────────────────────────────
+     SECTION 7 — CTA
+  ───────────────────────────────────────── */
+  #cta {
+    background: var(--amber);
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("571139362_1258493829650286_8818191595205678959_n.jpg");
+    background-size: cover;
+    background-position: center 30%;
+    opacity: 0.12;
+  }
+
+  .cta-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+  }
+
+  #cta .section-label {
+    color: var(--teal-dark);
+  }
+
+  #cta .section-label::before {
+    background: var(--teal-dark);
+  }
+
+  #cta .section-heading {
+    color: var(--charcoal);
+    margin-bottom: 20px;
+  }
+
+  .cta-body {
+    font-size: 1.1rem;
+    color: rgba(28,28,28,0.75);
+    line-height: 1.75;
+    margin-bottom: 40px;
+    max-width: 560px;
+  }
+
+  .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--teal-dark);
+    color: #ffffff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 18px 40px;
+    border-radius: 2px;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: #0a2a2a;
+    transform: translateY(-2px);
+  }
+
+  .cta-alt {
+    font-size: 0.9rem;
+    color: rgba(28,28,28,0.65);
+  }
+
+  .cta-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(28,28,28,0.15);
+  }
+
+  .cta-contact a {
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--teal-dark);
+    text-decoration: none;
+  }
+
+  .cta-contact a:hover {
+    text-decoration: underline;
+  }
+
+  /* ─────────────────────────────────────────
+     FOOTER
+  ───────────────────────────────────────── */
+  footer {
+    background: var(--teal-dark);
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .footer-meta {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+  }
+
+  .footer-links a {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+  }
+
+  .footer-links a:hover {
+    color: var(--amber);
+  }
+
+  /* ─────────────────────────────────────────
+     RESPONSIVE
+  ───────────────────────────────────────── */
+  @media (max-width: 900px) {
+    #hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .hero-text {
+      padding: 80px 32px 40px;
+      order: 2;
+    }
+
+    .hero-image-col {
+      height: 60vw;
+      order: 1;
+    }
+
+    .hero-photo-frame {
+      width: 260px;
+    }
+
+    .scroll-hint { display: none; }
+
+    .two-col,
+    .cards-grid,
+    .stats-row,
+    .awards-row,
+    .press-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .stat-block {
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stat-block:last-child { border-bottom: none; }
+
+    .logo-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .container { padding: 0 24px; }
+
+    #what, #story, #impact, #press, #cta { padding: 64px 0; }
+  }
+
+  @media (max-width: 480px) {
+    .logo-grid { grid-template-columns: 1fr 1fr; }
+    .creds-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     HERO
+════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Birmingham, West Midlands</div>
+    <h1 class="hero-name">Laura<br><span>Mace</span></h1>
+    <p class="hero-title">
+      Integrative Psychotherapist &amp; Community Builder.<br>
+      Founder, ALIVE Wellness Centre CIC.
+    </p>
+    <blockquote class="hero-mission">
+      "Empowering Lives,<br>Rebuilding Communities."
+    </blockquote>
+    <div class="hero-creds">
+      <span class="cred-pill">BACP Registered</span>
+      <span class="cred-pill">BSc Counselling &amp; Psychotherapy</span>
+      <span class="cred-pill">Level 3 DSL</span>
+      <span class="cred-pill">LoveBrum Hidden Hero</span>
+      <span class="cred-pill">PCC Citizen's Award</span>
+    </div>
+  </div>
+
+  <div class="hero-image-col">
+    <div class="hero-photo-frame">
+      <!-- SWAP: replace src with Laura-rework-portrait.png once in repo -->
+      <img src="Laura-rework-portrait.png"
+           alt="Laura Mace — Founder, ALIVE Wellness Centre CIC"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="hero-photo-placeholder" style="display:none;">
+        📷 Laura Mace portrait<br><small>Laura-rework-portrait.png</small>
+      </div>
+      <div class="hero-badge">Founder &amp; Psychotherapist</div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">Scroll</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     HER STORY
+════════════════════════════════════════ -->
+<section id="story">
+  <div class="container">
+    <div class="two-col">
+      <div class="story-image reveal">
+        <!-- SWAP: replace src with community activity photo -->
+        <img src="Screenshot_2026-03-21_at_17-58-24_Instagram.png"
+             alt="Laura with young people in the community"
+             style="width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:4px; display:block;"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="img-placeholder" style="display:none; aspect-ratio:4/5;">
+          📷 Laura with young people<br><small>community activity photo</small>
+        </div>
+      </div>
+
+      <div class="story-text reveal">
+        <div class="section-label">Her Story</div>
+        <h2 class="section-heading">Where This Comes From</h2>
+        <p>
+          Laura Mace didn't find this work through a textbook. She found it through
+          <strong>Birmingham itself</strong> — through the schools, the community centres,
+          the families quietly carrying wounds that the system rarely reaches.
+        </p>
+        <p>
+          As a qualified, trauma-informed integrative counsellor, Laura bridges the gap
+          between formal therapeutic services and the raw reality of community life.
+          She works with individuals, couples, young people and families — and she
+          does it with the credibility of someone who has <strong>sat alongside
+          survivors of knife crime and violence</strong> through her work at the
+          Rape and Sexual Violence Project (RSVP).
+        </p>
+        <p>
+          ALIVE Wellness Centre CIC is the organisation she built to make that work
+          permanent, scalable, and community-owned. It is not a pilot programme.
+          It is <strong>already working</strong>.
+        </p>
+
+        <div class="creds-grid">
+          <div class="cred-item">BSc (Hons) Counselling &amp; Psychotherapy</div>
+          <div class="cred-item">Master's in Psychology (in progress)</div>
+          <div class="cred-item">BACP Registered Member</div>
+          <div class="cred-item">Level 3 Designated Safeguarding Lead</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     WHAT SHE DOES
+════════════════════════════════════════ -->
+<section id="what">
+  <div class="container">
+    <div class="section-label reveal">ALIVE Wellness Centre CIC</div>
+    <h2 class="section-heading reveal">What Laura Does</h2>
+    <p class="what-intro reveal">
+      A community interest company supporting survivors of knife crime and youth
+      violence across Birmingham — through therapy, physical activity, and education.
+    </p>
+
+    <div class="cards-grid">
+      <div class="service-card reveal">
+        <div class="card-number">01</div>
+        <h3 class="card-title">Counselling Services</h3>
+        <p class="card-body">
+          Trauma-informed therapy for individuals, couples, young people and
+          families. Person-centred and psychodynamic approaches. Specialist
+          experience supporting survivors of violence and abuse.
+        </p>
+      </div>
+      <div class="service-card reveal">
+        <div class="card-number">02</div>
+        <h3 class="card-title">Physical &amp; Community Activities</h3>
+        <p class="card-body">
+          Personal training, youth clubs, and community centres. Partnership with
+          Krav4Kids — building confidence and resilience through basic self-defence
+          for young people. Because healing isn't only talk.
+        </p>
+      </div>
+      <div class="service-card reveal">
+        <div class="card-number">03</div>
+        <h3 class="card-title">Training &amp; Workshops</h3>
+        <p class="card-body">
+          Trauma-Informed Practice for Professionals. Understanding and Responding
+          to Youth Violence. Safeguarding and Mental Health Awareness — delivered
+          to schools and front-line services across the region.
+        </p>
+      </div>
+    </div>
+
+    <!-- SWAP: replace src with Krav-Kids01.png or community group photo -->
+    <img class="what-photo reveal"
+         src="Krav-Kids01.png"
+         alt="Young people in ALIVE Wellness activity session"
+         onerror="this.outerHTML='<div class=\'what-photo-placeholder reveal\'>📷 Krav4Kids / group activity — Krav-Kids01.png</div>'">
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     IMPACT
+════════════════════════════════════════ -->
+<section id="impact">
+  <div class="container">
+    <div class="section-label reveal">Proven. Recognised. Trusted.</div>
+    <h2 class="section-heading reveal">The Impact So Far</h2>
+
+    <div class="stats-row reveal">
+      <div class="stat-block">
+        <div class="stat-number">600+</div>
+        <div class="stat-label">Children reached across Birmingham schools</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-number">15</div>
+        <div class="stat-label">Schools delivered workshops in</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-number">2</div>
+        <div class="stat-label">Major awards for community impact</div>
+      </div>
+    </div>
+
+    <div class="awards-row reveal">
+      <div class="award-card">
+        <div class="award-icon">★</div>
+        <div class="award-body">
+          <h3>LoveBrum Hidden Hero</h3>
+          <p>
+            Named by Birmingham's LoveBrum initiative, recognising grassroots
+            community champions making an outstanding contribution to the city.
+            Funded school workshop programme reached 600 children.
+          </p>
+          <!-- SWAP: replace src with LoveBrum-HiddenHero.png -->
+          <img class="award-logo"
+               src="LoveBrum-HiddenHero.png"
+               alt="LoveBrum Hidden Heroes"
+               onerror="this.style.display='none'">
+        </div>
+      </div>
+      <div class="award-card">
+        <div class="award-icon">🏅</div>
+        <div class="award-body">
+          <h3>Citizen's Award for Tackling Knife Crime</h3>
+          <p>
+            Awarded by the West Midlands Police and Crime Commissioner's Office,
+            in recognition of Laura's sustained community action on knife crime
+            and youth violence across Birmingham.
+          </p>
+          <!-- SWAP: replace src with PCC LinkedIn image or logo -->
+          <img class="award-logo"
+               src="-10-Office-of-the-West-Midlands-Police-and-Crime-Commissioner-Posts-LinkedIn.png"
+               alt="West Midlands Police and Crime Commissioner"
+               onerror="this.style.display='none'">
+        </div>
+      </div>
+    </div>
+
+    <!-- SWAP: replace src with Citizens Award ceremony photo -->
+    <img class="impact-photo reveal"
+         src="571139362_1258493829650286_8818191595205678959_n.jpg"
+         alt="Citizens Awards ceremony — Laura Mace"
+         onerror="this.outerHTML='<div class=\'impact-photo-placeholder reveal\'>📷 Citizens Awards ceremony photo</div>'">
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     PARTNERS
+════════════════════════════════════════ -->
+<section id="partners">
+  <div class="container">
+    <div class="section-label reveal" style="justify-content:center;">Trusted and Supported By</div>
+    <h2 class="section-heading reveal" style="text-align:center;">Partners &amp; Supporters</h2>
+
+    <div class="logo-grid reveal">
+      <div class="logo-cell">
+        <img src="Million-Hours-Fund.png" alt="The National Lottery Million Hours Fund"
+             onerror="this.outerHTML='<span class=\'logo-text\'>National Lottery<br>Million Hours Fund</span>'">
+      </div>
+      <div class="logo-cell">
+        <img src="LoveBrum-HiddenHero.png" alt="LoveBrum"
+             onerror="this.outerHTML='<span class=\'logo-text\'>LoveBrum</span>'">
+      </div>
+      <div class="logo-cell">
+        <img src="England-Boxing.png" alt="England Boxing"
+             onerror="this.outerHTML='<span class=\'logo-text\'>England Boxing</span>'">
+      </div>
+      <div class="logo-cell">
+        <span class="logo-text">BBC<br>Children in Need</span>
+      </div>
+      <div class="logo-cell">
+        <span class="logo-text">West Midlands Police<br>&amp; Crime Commissioner</span>
+      </div>
+      <div class="logo-cell">
+        <span class="logo-text">ASDA<br>Community</span>
+      </div>
+      <div class="logo-cell">
+        <span class="logo-text">Sport<br>England</span>
+      </div>
+      <div class="logo-cell">
+        <span class="logo-text">Krav4Kids</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     PRESS / MEDIA
+════════════════════════════════════════ -->
+<section id="press">
+  <div class="container">
+    <div class="section-label reveal">In the Media</div>
+    <h2 class="section-heading reveal">Coverage &amp; Recognition</h2>
+
+    <div class="press-grid">
+      <div class="press-card reveal">
+        <div class="press-thumb-placeholder">
+          ▶ BBC Feature — Kieran Wood<br>
+          <small style="margin-top:8px; display:block; opacity:0.6;">
+            Video: Kieran-Wood-BBC3.mp4
+          </small>
+        </div>
+        <div class="press-content">
+          <div class="video-badge">BBC Feature</div>
+          <h3>Knife Crime in Birmingham — Kieran Wood</h3>
+          <p>
+            A BBC programme documenting the impact of knife crime on Birmingham
+            communities — and the people working to change it. Laura's work with
+            ALIVE Wellness Centre features in this story.
+          </p>
+        </div>
+      </div>
+
+      <div class="press-card reveal">
+        <img class="press-thumb"
+             src="571139362_1258493829650286_8818191595205678959_n.jpg"
+             alt="Citizens Awards"
+             onerror="this.outerHTML='<div class=\'press-thumb-placeholder\'>📷 Awards photo</div>'">
+        <div class="press-content">
+          <div class="press-source">Birmingham Mail</div>
+          <h3>Birmingham Mum Turns Knife Crime Tragedy Into Action</h3>
+          <p>
+            Laura's personal story — and the community organisation she built
+            from it — covered by the Birmingham Mail. A story of lived
+            experience turned into lasting change.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     CTA
+════════════════════════════════════════ -->
+<section id="cta">
+  <div class="container">
+    <div class="cta-inner reveal">
+      <div class="section-label">Support Laura</div>
+      <h2 class="section-heading">Back Something Real</h2>
+      <p class="cta-body">
+        Laura is seeking public backing from local businesses and community leaders
+        who want to stand behind work that is already making a measurable difference
+        to Birmingham's young people. No long commitments. Just your name alongside hers —
+        and the communities she serves.
+      </p>
+      <div class="cta-actions">
+        <a class="btn-primary"
+           href="mailto:laura.mace@alivewellnesscentre.org.uk?subject=Expression%20of%20Support%20%E2%80%94%20ALIVE%20Wellness%20Centre&body=Hi%20Laura%2C%0A%0AI%20would%20like%20to%20express%20my%20support%20for%20ALIVE%20Wellness%20Centre%20CIC.%0A%0A">
+          Express Your Support
+        </a>
+        <span class="cta-alt">Takes less than a minute.</span>
+      </div>
+      <div class="cta-contact">
+        <a href="tel:08002465298">📞 0800 246 5298</a>
+        <a href="mailto:laura.mace@alivewellnesscentre.org.uk">✉ laura.mace@alivewellnesscentre.org.uk</a>
+        <a href="https://www.alivewellnesscentre.org.uk" target="_blank" rel="noopener">🌐 alivewellnesscentre.org.uk</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer>
+  <div class="footer-name">ALIVE Wellness Centre CIC</div>
+  <div class="footer-meta">© 2025 ALIVE Wellness Centre CIC. Founded by Laura Mace.</div>
+  <div class="footer-links">
+    <a href="https://www.alivewellnesscentre.org.uk" target="_blank" rel="noopener">Website</a>
+    <a href="mailto:laura.mace@alivewellnesscentre.org.uk">Contact</a>
+  </div>
+</footer>
+
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.classList.add('visible');
+        observer.unobserve(el.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

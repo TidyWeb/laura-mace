@@ -1061,13 +1061,6 @@
         gap: 20px !important;
       }
 
-      /* Partners/Sponsors grid stacking */
-      .logo-grid {
-        grid-template-columns: 1fr 1fr !important;
-        /* Shows 2 logos per row on mobile instead of 4 */
-        gap: 20px !important;
-      }
-
       /* Text adjustment for smaller screens */
       .vision-text h3 {
         font-size: 1.8rem !important;
@@ -1075,6 +1068,56 @@
 
       .section-heading {
         font-size: 2.2rem !important;
+      }
+
+      /* HERO SECTION FIX: Stacks image and text vertically */
+      .hero-content {
+        display: flex !important;
+        flex-direction: column !important;
+        text-align: center !important;
+        padding: 40px 20px !important;
+      }
+
+      .hero-image {
+        width: 100% !important;
+        max-width: 320px !important;
+        margin: 0 auto 30px !important;
+        order: 1 !important;
+        /* Image on top */
+      }
+
+      .hero-text {
+        order: 2 !important;
+        /* Text below image */
+        width: 100% !important;
+      }
+
+      /* PARTNERS LOGO GRID FIX: Prevents horizontal cutoff */
+      .logo-grid {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)) !important;
+        gap: 20px !important;
+        padding: 0 15px !important;
+        overflow: hidden !important;
+        /* Kills horizontal scroll */
+      }
+
+      .logo-cell {
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        padding: 15px !important;
+      }
+
+      .logo-cell img {
+        max-width: 100% !important;
+        height: auto !important;
+      }
+
+      /* GENERAL TWEAK: Ensure sections don't bleed off-screen */
+      section {
+        overflow-x: hidden !important;
       }
     }
   </style>
@@ -1167,10 +1210,21 @@
     <div class="container">
       <div class="section-label reveal">ALIVE Wellness Centre CIC</div>
       <h2 class="section-heading reveal">What Laura Does</h2>
-      <p class="what-intro reveal">
-        A community interest company supporting survivors of knife crime and youth
-        violence across Birmingham — through therapy, physical activity, and education.
-      </p>
+      <div class="two-col" style="margin-bottom: 60px;">
+        <p class="what-intro reveal" style="margin-bottom: 0;">
+          Founded by Laura Mace following her own son’s experience with knife crime, ALIVE was born from a mother’s
+          mission to turn personal trauma into community-wide healing. We are a community interest company supporting
+          survivors of youth violence across Birmingham by merging professional therapy with physical activity and
+          education. Our work bridges the critical gap in victim support, ensuring that tragedy becomes a catalyst for
+          resilience and lasting change.
+        </p>
+        <div class="reveal"
+          style="border: 1px solid var(--amber); border-radius: 4px; overflow: hidden; display: flex;">
+          <img src="IsleyLaura.webp" alt="Laura Mace"
+            style="width: 100%; height: auto; object-fit: cover; display: block;"
+            onerror="this.outerHTML='<div style=\'padding:40px;text-align:center;color:white;\'>📷 IsleyLaura.webp</div>'">
+        </div>
+      </div>
 
       <div class="cards-grid">
         <div class="service-card reveal">

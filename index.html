@@ -156,28 +156,22 @@
     position: relative;
     width: 420px;
     max-width: 90%;
-  }
-
-  .hero-photo-frame::before {
-    content: '';
-    position: absolute;
-    top: -20px;
-    left: -20px;
-    right: 20px;
-    bottom: 20px;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
     border: 2px solid rgba(232,160,32,0.3);
     border-radius: 4px;
-    z-index: 0;
+    background: rgba(255,255,255,0.06);
   }
 
   .hero-photo-frame img {
-    position: relative;
-    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    aspect-ratio: 1;
+    height: 100%;
     object-fit: cover;
     object-position: top center;
-    border-radius: 4px;
+    z-index: 1;
     display: block;
   }
 
@@ -185,7 +179,7 @@
     position: relative;
     z-index: 1;
     width: 100%;
-    aspect-ratio: 1;
+    height: 100%;
     background: rgba(255,255,255,0.06);
     border: 2px dashed rgba(255,255,255,0.2);
     border-radius: 4px;
@@ -292,32 +286,12 @@
     align-items: center;
   }
 
-  .story-image {
+  .story-image-wrapper {
     position: relative;
+    z-index: 1;
   }
 
-  .story-image img,
-  .story-image .img-placeholder {
-    width: 100%;
-    aspect-ratio: 4/5;
-    object-fit: cover;
-    border-radius: 4px;
-    display: block;
-  }
-
-  .img-placeholder {
-    background: var(--teal-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--teal);
-    font-size: 0.85rem;
-    text-align: center;
-    padding: 20px;
-    border: 2px dashed var(--border);
-  }
-
-  .story-image::after {
+  .story-image-wrapper::after {
     content: '';
     position: absolute;
     bottom: -16px;
@@ -327,6 +301,35 @@
     background: var(--teal-light);
     z-index: -1;
     border-radius: 4px;
+  }
+
+  .story-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: 4px;
+    background: var(--teal-light);
+  }
+
+  .story-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .img-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--teal);
+    font-size: 0.85rem;
+    text-align: center;
+    padding: 20px;
+    border: 2px dashed var(--border);
   }
 
   .story-text p {
@@ -921,9 +924,6 @@
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════
-     HERO
-════════════════════════════════════════ -->
 <section id="hero">
   <div class="hero-text">
     <div class="hero-eyebrow">Birmingham, West Midlands</div>
@@ -946,7 +946,6 @@
 
   <div class="hero-image-col">
     <div class="hero-photo-frame">
-      <!-- SWAP: replace src with Laura-rework-portrait.png once in repo -->
       <img src="Laura-rework-portrait.png"
            alt="Laura Mace — Founder, ALIVE Wellness Centre CIC"
            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
@@ -961,20 +960,17 @@
 </section>
 
 
-<!-- ═══════════════════════════════════════
-     HER STORY
-════════════════════════════════════════ -->
 <section id="story">
   <div class="container">
     <div class="two-col">
-      <div class="story-image reveal">
-        <!-- SWAP: replace src with community activity photo -->
-        <img src="Screenshot_2026-03-21_at_17-58-24_Instagram.png"
-             alt="Laura with young people in the community"
-             style="width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:4px; display:block;"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="img-placeholder" style="display:none; aspect-ratio:4/5;">
-          📷 Laura with young people<br><small>community activity photo</small>
+      <div class="story-image-wrapper reveal">
+        <div class="story-image">
+          <img src="Screenshot_2026-03-21_at_17-58-24_Instagram.png"
+               alt="Laura with young people in the community"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="img-placeholder" style="display:none;">
+            📷 Laura with young people<br><small>community activity photo</small>
+          </div>
         </div>
       </div>
 
@@ -1012,9 +1008,6 @@
 </section>
 
 
-<!-- ═══════════════════════════════════════
-     WHAT SHE DOES
-════════════════════════════════════════ -->
 <section id="what">
   <div class="container">
     <div class="section-label reveal">ALIVE Wellness Centre CIC</div>
@@ -1054,7 +1047,6 @@
       </div>
     </div>
 
-    <!-- SWAP: replace src with Krav-Kids01.png or community group photo -->
     <img class="what-photo reveal"
          src="Krav-Kids01.png"
          alt="Young people in ALIVE Wellness activity session"
@@ -1063,9 +1055,6 @@
 </section>
 
 
-<!-- ═══════════════════════════════════════
-     IMPACT
-════════════════════════════════════════ -->
 <section id="impact">
   <div class="container">
     <div class="section-label reveal">Proven. Recognised. Trusted.</div>
@@ -1096,7 +1085,6 @@
             community champions making an outstanding contribution to the city.
             Funded school workshop programme reached 600 children.
           </p>
-          <!-- SWAP: replace src with LoveBrum-HiddenHero.png -->
           <img class="award-logo"
                src="LoveBrum-HiddenHero.png"
                alt="LoveBrum Hidden Heroes"
@@ -1112,7 +1100,6 @@
             in recognition of Laura's sustained community action on knife crime
             and youth violence across Birmingham.
           </p>
-          <!-- SWAP: replace src with PCC LinkedIn image or logo -->
           <img class="award-logo"
                src="-10-Office-of-the-West-Midlands-Police-and-Crime-Commissioner-Posts-LinkedIn.png"
                alt="West Midlands Police and Crime Commissioner"
@@ -1121,7 +1108,6 @@
       </div>
     </div>
 
-    <!-- SWAP: replace src with Citizens Award ceremony photo -->
     <img class="impact-photo reveal"
          src="571139362_1258493829650286_8818191595205678959_n.jpg"
          alt="Citizens Awards ceremony — Laura Mace"
@@ -1130,9 +1116,6 @@
 </section>
 
 
-<!-- ═══════════════════════════════════════
-     PARTNERS
-════════════════════════════════════════ -->
 <section id="partners">
   <div class="container">
     <div class="section-label reveal" style="justify-content:center;">Trusted and Supported By</div>
@@ -1171,9 +1154,6 @@
 </section>
 
 
-<!-- ═══════════════════════════════════════
-     PRESS / MEDIA
-════════════════════════════════════════ -->
 <section id="press">
   <div class="container">
     <div class="section-label reveal">In the Media</div>
@@ -1218,9 +1198,6 @@
 </section>
 
 
-<!-- ═══════════════════════════════════════
-     CTA
-════════════════════════════════════════ -->
 <section id="cta">
   <div class="container">
     <div class="cta-inner reveal">
@@ -1249,9 +1226,6 @@
 </section>
 
 
-<!-- ═══════════════════════════════════════
-     FOOTER
-════════════════════════════════════════ -->
 <footer>
   <div class="footer-name">ALIVE Wellness Centre CIC</div>
   <div class="footer-meta">© 2025 ALIVE Wellness Centre CIC. Founded by Laura Mace.</div>

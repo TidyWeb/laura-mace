@@ -1120,6 +1120,73 @@
         overflow-x: hidden !important;
       }
     }
+
+    #vision .service-card,
+    #transition .service-card {
+      background: #ffffff;
+      border: 1px solid rgba(26, 92, 92, 0.15);
+    }
+
+    #vision .card-title,
+    #transition .card-title {
+      color: #1a5c5c;
+    }
+
+    #vision .card-body,
+    #transition .card-body {
+      color: #3a3a3a;
+    }
+
+    #vision .service-card:hover,
+    #transition .service-card:hover {
+      background: #e8f4f4;
+      border-color: #e8a020;
+    }
+
+    @media print {
+      #hero {
+        min-height: 0;
+        height: 100vh;
+        page-break-after: always;
+      }
+
+      .scroll-hint,
+      .footer-links,
+      .btn-primary {
+        display: none !important;
+      }
+
+      body {
+        background: white !important;
+        color: black !important;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+      section {
+        padding: 40px 0 !important;
+        page-break-inside: avoid;
+      }
+
+      .hero-text {
+        padding: 40px !important;
+      }
+
+      h1,
+      h2 {
+        color: #1a5c5c !important;
+      }
+
+      .vision-features {
+        gap: 20px !important;
+        margin-top: 20px !important;
+      }
+    }
   </style>
 </head>
 
@@ -1435,6 +1502,34 @@
             influential leaders and businesses. Your endorsement of our bid through the AVIRE property scheme is the
             most powerful tool we have to secure Eagle Court. By standing with ALIVE, you are helping us turn an empty
             office building into a heartbeat for the community.</p>
+        </div>
+      </div>
+
+      <div class="vision-features"
+        style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; margin-top: 60px;">
+        <div class="feature-item" style="border-left: 3px solid #e8a020; padding-left: 20px;">
+          <h3 style="font-family: 'Playfair Display', serif; color: #1a5c5c; font-size: 1.4rem; margin-bottom: 12px;">
+            Domestic Violence Sanctuary</h3>
+          <p style="font-size: 0.95rem; color: #3a3a3a; line-height: 1.7;">Private, trauma-informed spaces for
+            specialized survivor support and 1-to-1 advocacy in a safe, rooted environment.</p>
+        </div>
+        <div class="feature-item" style="border-left: 3px solid #e8a020; padding-left: 20px;">
+          <h3 style="font-family: 'Playfair Display', serif; color: #1a5c5c; font-size: 1.4rem; margin-bottom: 12px;">
+            Clinical Excellence</h3>
+          <p style="font-size: 0.95rem; color: #3a3a3a; line-height: 1.7;">Dedicated, sound-proofed rooms for health,
+            relationship, and family counselling sessions delivered by qualified professionals.</p>
+        </div>
+        <div class="feature-item" style="border-left: 3px solid #e8a020; padding-left: 20px;">
+          <h3 style="font-family: 'Playfair Display', serif; color: #1a5c5c; font-size: 1.4rem; margin-bottom: 12px;">
+            Adult Learning Hub</h3>
+          <p style="font-size: 0.95rem; color: #3a3a3a; line-height: 1.7;">Versatile classroom space to support
+            employment skills, digital literacy, and community mental health training.</p>
+        </div>
+        <div class="feature-item" style="border-left: 3px solid #e8a020; padding-left: 20px;">
+          <h3 style="font-family: 'Playfair Display', serif; color: #1a5c5c; font-size: 1.4rem; margin-bottom: 12px;">
+            Community Stability</h3>
+          <p style="font-size: 0.95rem; color: #3a3a3a; line-height: 1.7;">A permanent, reliable home for Krav4Kids,
+            Youth Clubs, and grassroots therapy services that the city can depend on.</p>
         </div>
       </div>
 

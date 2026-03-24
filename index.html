@@ -1038,15 +1038,75 @@
 
     @media (max-width: 768px) {
 
-      /* Hero and Vision rows stacking */
-      .two-col,
-      .vision-row {
-        grid-template-columns: 1fr !important;
-        gap: 40px !important;
-        margin-bottom: 60px !important;
+      /* Hero — stack vertically */
+      #hero {
+        display: flex !important;
+        flex-direction: column !important;
+        min-height: auto !important;
       }
 
-      /* Ensure text comes before images in stacked vision rows */
+      .hero-text {
+        order: 2 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 40px 20px !important;
+        min-height: auto !important;
+      }
+
+      .hero-image-col {
+        order: 1 !important;
+        width: 100% !important;
+        height: 60vw !important;
+      }
+
+      .hero-photo-frame {
+        width: 200px !important;
+        height: 200px !important;
+      }
+
+      /* Force all multi-column layouts to a single vertical stack */
+      .two-col,
+      .vision-row,
+      .cards-grid,
+      .stats-row,
+      .awards-row,
+      .press-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 30px !important;
+        margin-bottom: 40px !important;
+      }
+
+      /* Images scale correctly */
+      .vision-image,
+      .story-image-wrapper,
+      .press-thumb {
+        order: 1 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        margin: 0 auto !important;
+      }
+
+      .vision-image img,
+      .story-image img,
+      .press-thumb img {
+        width: 100% !important;
+        height: auto !important;
+        object-fit: contain !important;
+      }
+
+      /* Text blocks */
+      .vision-text,
+      .story-text,
+      .press-content {
+        order: 2 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 20px !important;
+      }
+
+      /* Vision alternating order fix */
       .vision-row:nth-child(even) .vision-text {
         order: 1 !important;
       }
@@ -1055,13 +1115,7 @@
         order: 2 !important;
       }
 
-      /* Cards stacking (What Laura Does) */
-      .cards-grid {
-        grid-template-columns: 1fr !important;
-        gap: 20px !important;
-      }
-
-      /* Text adjustment for smaller screens */
+      /* Typography */
       .vision-text h3 {
         font-size: 1.8rem !important;
       }
@@ -1070,36 +1124,13 @@
         font-size: 2.2rem !important;
       }
 
-      /* HERO SECTION FIX: Stacks image and text vertically */
-      .hero-content {
-        display: flex !important;
-        flex-direction: column !important;
-        text-align: center !important;
-        padding: 40px 20px !important;
-      }
-
-      .hero-image {
-        width: 100% !important;
-        max-width: 320px !important;
-        margin: 0 auto 30px !important;
-        order: 1 !important;
-        /* Image on top */
-      }
-
-      .hero-text {
-        order: 2 !important;
-        /* Text below image */
-        width: 100% !important;
-      }
-
-      /* PARTNERS LOGO GRID FIX: Prevents horizontal cutoff */
+      /* Partners logo grid */
       .logo-grid {
         display: grid !important;
         grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)) !important;
         gap: 20px !important;
         padding: 0 15px !important;
         overflow: hidden !important;
-        /* Kills horizontal scroll */
       }
 
       .logo-cell {
@@ -1115,7 +1146,7 @@
         height: auto !important;
       }
 
-      /* GENERAL TWEAK: Ensure sections don't bleed off-screen */
+      /* Prevent horizontal bleed */
       section {
         overflow-x: hidden !important;
       }

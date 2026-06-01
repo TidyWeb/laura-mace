@@ -1,0 +1,2804 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALIVE Wellness Centre CIC — Application to Avire</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --teal: #1a5c5c;
+      --teal-dark: #0f3c3c;
+      --teal-light: #e8f4f4;
+      --amber: #e8a020;
+      --charcoal: #1c1c1c;
+      --off-white: #f9f6f1;
+      --mid-grey: #6b6b6b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #cccccc;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 10mm auto;
+      background: white;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media print {
+      body {
+        background: none;
+      }
+
+      .page {
+        margin: 0;
+        box-shadow: none;
+        page-break-after: always;
+      }
+    }
+
+    .s1-page {
+      width: 210mm;
+      min-height: 297mm;
+      max-height: 297mm;
+      padding: 0;
+      background: var(--teal-dark);
+      position: relative;
+      box-sizing: border-box;
+      margin: 0 auto;
+      overflow: hidden;
+      display: flex;
+    }
+
+    .s1-spine {
+      width: 32px;
+      min-height: 297mm;
+      background: var(--amber);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .s1-spine-text {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--teal-dark);
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      white-space: nowrap;
+    }
+
+    .s1-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 0 16mm 0 16mm;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .s1-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 60px;
+    }
+
+    .s1-logo {
+      height: 240px;
+      width: auto;
+      display: block;
+      filter: brightness(0) invert(1);
+      opacity: 0.9;
+    }
+
+    .s1-doc-ref {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.4);
+      text-align: right;
+      line-height: 1.6;
+    }
+
+    .s1-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.1;
+      margin-bottom: 28px;
+      max-width: 480px;
+      margin-top: 40px;
+    }
+
+    .s1-headline span {
+      color: var(--amber);
+    }
+
+    .s1-standfirst {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.65);
+      line-height: 1.75;
+      max-width: 420px;
+      margin-bottom: 32px;
+      font-style: italic;
+    }
+
+    .s1-stats-band {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 0;
+      margin-top: 20px;
+    }
+
+    .s1-stat {
+      padding: 20px 16px;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .s1-stat .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--amber);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .s1-stat .lbl {
+      font-size: 0.72rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255, 255, 255, 0.55);
+      line-height: 1.4;
+    }
+
+    .s1-spacer {
+      flex: 1;
+    }
+
+    .s1-bottom-bar {
+      background: var(--amber);
+      margin: 0 -16mm;
+      padding: 14px 16mm;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .s1-bottom-bar .left {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--teal-dark);
+    }
+
+    .s1-bottom-bar .right {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--teal-dark);
+      text-align: right;
+      line-height: 1.35;
+    }
+
+    .s1-watermark {
+      position: absolute;
+      bottom: 52px;
+      left: 0;
+      right: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 9rem;
+      font-weight: 900;
+      color: rgba(255, 255, 255, 0.03);
+      text-align: center;
+      letter-spacing: 0.15em;
+      pointer-events: none;
+      user-select: none;
+      line-height: 1;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="s1-page">
+
+    <div class="s1-spine">
+      <span class="s1-spine-text">ALIVE Wellness Centre CIC &mdash; Property Application &mdash; Avire UK</span>
+    </div>
+
+    <div class="s1-main">
+
+      <div class="s1-topbar">
+        <img class="s1-logo" src="Alive-logo-final.png" alt="ALIVE Wellness Centre CIC">
+        <div class="s1-doc-ref">
+          Charity Lettings Application<br>
+          Submitted to Avire UK
+        </div>
+      </div>
+
+      <h1 class="s1-headline">A Proposal to Give <span>Birmingham's Young People</span> a Permanent Home.</h1>
+
+      <p class="s1-standfirst">ALIVE Wellness Centre CIC is applying to occupy Eagle Court, Birmingham — a multi-floor
+        facility that will become a permanent base for trauma-informed therapy, youth physical activity, and community
+        education in one of England's most underserved corridors.</p>
+
+      <div class="s1-stats-band">
+        <div class="s1-stat">
+          <div class="num">600+</div>
+          <div class="lbl">Children reached across Birmingham schools</div>
+        </div>
+        <div class="s1-stat">
+          <div class="num">15</div>
+          <div class="lbl">Schools delivered workshops to</div>
+        </div>
+        <div class="s1-stat">
+          <div class="num">2nd</div>
+          <div class="lbl">Most deprived local authority in England</div>
+        </div>
+      </div>
+
+      <div class="s1-spacer"></div>
+
+      <div class="s1-watermark">ALIVE</div>
+
+      <div class="s1-bottom-bar">
+        <div class="left">Eagle Court, Birmingham &mdash; Charity Letting Application</div>
+        <div class="right">ALIVE Wellness Centre CIC<br>Community Interest Company</div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <style>
+    .s2-page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 10mm auto;
+      background: var(--off-white);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 14mm 20mm;
+    }
+
+    @media print {
+      .s2-page {
+        margin: 0;
+        box-shadow: none;
+        page-break-after: always;
+      }
+    }
+
+    .s2-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--teal);
+    }
+
+    .s2-section-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .s2-section-label::before {
+      content: '';
+      width: 22px;
+      height: 2px;
+      background: var(--teal);
+    }
+
+    .s2-page-ref {
+      font-size: 0.62rem;
+      color: var(--mid-grey);
+      letter-spacing: 0.08em;
+    }
+
+    .s2-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      font-weight: 900;
+      color: var(--teal-dark);
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .s2-subheading {
+      font-size: 1rem;
+      color: var(--mid-grey);
+      font-weight: 300;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .s2-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      flex: 1;
+      justify-content: space-between;
+    }
+
+    .s2-left {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .s2-right {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .s2-body {
+      font-size: 0.92rem;
+      line-height: 1.9;
+      color: #3a3a3a;
+    }
+
+    .s2-body strong {
+      color: var(--teal-dark);
+    }
+
+    .s2-pull {
+      background: var(--teal-dark);
+      border-radius: 3px;
+      padding: 20px 22px;
+    }
+
+    .s2-pull p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.08rem;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.75;
+    }
+
+    .s2-pull p span {
+      color: var(--amber);
+    }
+
+    .s2-creds {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px;
+    }
+
+    .s2-cred {
+      background: var(--teal-light);
+      border-left: 3px solid var(--teal);
+      padding: 12px 14px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--teal-dark);
+      line-height: 1.4;
+      border-radius: 0 2px 2px 0;
+    }
+
+    .s2-amber-box {
+      background: var(--amber);
+      border-radius: 3px;
+      padding: 18px 20px;
+    }
+
+    .s2-amber-box p {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      line-height: 1.75;
+    }
+
+    .s2-image-frame {
+      border: 2px solid rgba(232, 160, 32, 0.35);
+      border-radius: 3px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .s2-image-frame img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      max-height: 240px;
+    }
+
+    .s2-footer {
+      margin-top: 14px;
+      padding-top: 9px;
+      border-top: 1px solid rgba(26, 92, 92, 0.15);
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.62rem;
+      color: var(--mid-grey);
+      letter-spacing: 0.06em;
+    }
+
+    .s2-footer strong {
+      color: var(--teal);
+      font-family: 'Playfair Display', serif;
+      font-size: 0.75rem;
+    }
+  </style>
+
+  <div class="s2-page">
+
+    <div class="s2-topbar">
+      <div class="s2-section-label">Who We Are</div>
+      <div class="s2-page-ref">ALIVE Wellness Centre CIC &nbsp;&middot;&nbsp; Avire Application 2026</div>
+    </div>
+
+    <h2 class="s2-heading">Where This Comes From</h2>
+    <p class="s2-subheading">A practitioner whose authority is lived, not just learned.</p>
+
+    <div class="s2-two-col">
+
+      <div class="s2-left">
+
+        <div class="s2-image-frame">
+          <img src="LauraandKidsFinal.png" alt="Laura Mace with young people">
+        </div>
+
+        <p class="s2-body">
+          Laura Mace did not come to this work through a textbook. She came to it through
+          <strong>Birmingham itself</strong> — through the schools, the community centres, the
+          families carrying wounds that statutory services rarely see.
+        </p>
+
+        <p class="s2-body">
+          As the mother of a son who survived a knife crime incident, Laura's motivation is
+          <strong>personal before it is professional</strong>. ALIVE Wellness Centre CIC is the
+          organisation she built to ensure that no family in Birmingham has to navigate that
+          experience without support.
+        </p>
+
+        <div class="s2-pull">
+          <p>&ldquo;She bridges the gap between formal therapeutic services and the raw reality of
+            community life &mdash; with the credibility of someone who has
+            <span>sat alongside survivors.</span>&rdquo;
+          </p>
+        </div>
+
+      </div>
+
+      <div class="s2-right">
+
+        <p class="s2-body">
+          Laura is a trauma-informed integrative counsellor with frontline experience supporting
+          survivors of knife crime and violence through her work at the
+          <strong>Rape and Sexual Violence Project (RSVP)</strong>. She works with individuals,
+          couples, young people and families.
+        </p>
+
+        <p class="s2-body">
+          ALIVE is a registered <strong>Community Interest Company</strong> — subject to the
+          CIC asset-lock, with community benefit obligations regulated by the CIC Regulator.
+          It is not a pilot programme. It has been operating in Birmingham for several years,
+          is recognised by its civic partners, and has a track record of measurable change.
+        </p>
+
+        <div class="s2-creds">
+          <div class="s2-cred">BASc (Hons)<br>Counselling &amp; Psychotherapy</div>
+          <div class="s2-cred">MSc Psychology<br>1st Class Distinction</div>
+          <div class="s2-cred">BACP Registered<br>Member</div>
+          <div class="s2-cred">Level 3 Designated<br>Safeguarding Lead</div>
+        </div>
+
+        <div class="s2-amber-box">
+          <p>ALIVE Wellness Centre CIC is registered with Companies House. It is regulated by
+            the Office of the CIC Regulator. The asset-lock means all property and income stays
+            committed to community benefit — no individual can extract value from the organisation.</p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="s2-footer">
+      <strong>ALIVE Wellness Centre CIC</strong>
+      <span>Section 2 &mdash; Who We Are</span>
+      <span>alivewellnesscentre.org.uk</span>
+    </div>
+
+  </div>
+
+  <style>
+    .s3-page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 10mm auto;
+      background: var(--teal-dark);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+      display: flex;
+      flex-direction: column;
+      padding: 14mm 20mm;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .s3-page::after {
+      content: 'ALIVE';
+      position: absolute;
+      right: -20px;
+      bottom: -30px;
+      font-family: 'Playfair Display', serif;
+      font-size: 22vw;
+      font-weight: 900;
+      color: rgba(255, 255, 255, 0.03);
+      line-height: 1;
+      pointer-events: none;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    @media print {
+      .s3-page {
+        margin: 0;
+        box-shadow: none;
+        page-break-after: always;
+      }
+    }
+
+    .s3-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid rgba(232, 160, 32, 0.5);
+    }
+
+    .s3-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .s3-label::before {
+      content: '';
+      width: 22px;
+      height: 2px;
+      background: var(--amber);
+    }
+
+    .s3-page-ref {
+      font-size: 0.62rem;
+      color: rgba(255, 255, 255, 0.3);
+      letter-spacing: 0.08em;
+    }
+
+    .s3-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .s3-intro {
+      font-size: 0.92rem;
+      color: rgba(255, 255, 255, 0.65);
+      line-height: 1.75;
+      margin-bottom: 22px;
+      max-width: 480px;
+      font-weight: 300;
+    }
+
+    .s3-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .s3-card {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+      padding: 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .s3-card-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: rgba(232, 160, 32, 0.25);
+      line-height: 1;
+    }
+
+    .s3-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.25;
+    }
+
+    .s3-card-body {
+      font-size: 0.74rem;
+      color: rgba(255, 255, 255, 0.62);
+      line-height: 1.75;
+      flex: 1;
+    }
+
+    .s3-card-body em {
+      color: var(--amber);
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    .s3-card.highlight {
+      background: rgba(232, 160, 32, 0.12);
+      border-color: rgba(232, 160, 32, 0.3);
+    }
+
+    .s3-footer {
+      margin-top: 16px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.62rem;
+      color: rgba(255, 255, 255, 0.3);
+      letter-spacing: 0.06em;
+    }
+
+    .s3-footer strong {
+      color: var(--amber);
+      font-family: 'Playfair Display', serif;
+      font-size: 0.75rem;
+    }
+  </style>
+
+  <div class="s3-page">
+
+    <div class="s3-topbar">
+      <div class="s3-label">What We Do</div>
+      <div class="s3-page-ref">ALIVE Wellness Centre CIC &nbsp;&middot;&nbsp; Avire Application 2026</div>
+    </div>
+
+    <h2 class="s3-heading">Services, Activities &amp; Alliances</h2>
+    <p class="s3-intro">ALIVE combines therapy, physical activity, and education under one organisation. Not a single
+      service but networked model of community intervention, using several interlocking approaches.</p>
+
+    <div class="s3-grid">
+
+      <div class="s3-card">
+        <div class="s3-card-num">01</div>
+        <div class="s3-card-title">Counselling Services</div>
+        <p class="s3-card-body">Trauma-informed therapy for individuals, couples, young people and families.
+          Person-centred and psychodynamic approaches. Specialist experience supporting survivors of violence, abuse,
+          and knife crime. <em>BACP registered. RSVP practitioner background.</em></p>
+      </div>
+
+      <div class="s3-card">
+        <div class="s3-card-num">02</div>
+        <div class="s3-card-title">Physical &amp; Community Activities</div>
+        <p class="s3-card-body">Personal training, youth clubs, and community centre programming. Partnership with
+          <em>Krav4Kids</em> delivering structured self-defence for young people aged 11&ndash;16. Sport and movement as
+          core components of trauma recovery.
+        </p>
+      </div>
+
+      <div class="s3-card">
+        <div class="s3-card-num">03</div>
+        <div class="s3-card-title">Training &amp; Workshops</div>
+        <p class="s3-card-body">Delivered into schools and front-line services across Birmingham: <em>Trauma-Informed
+            Practice for Professionals</em> &middot; Understanding &amp; Responding to Youth Violence &middot;
+          Safeguarding and Mental Health Awareness. 15 schools reached to date.</p>
+      </div>
+
+      <div class="s3-card highlight">
+        <div class="s3-card-num">04</div>
+        <div class="s3-card-title">Kieran Wood &mdash; Self-Defence</div>
+        <p class="s3-card-body">Community partner delivering Saturday sessions (11am&ndash;1pm) at Hatchford Brook
+          Community Hub for young people aged 11&ndash;16. Young people who've been through it learning to handle
+          themselves and find their confidence again. <em>BBC media featured.</em></p>
+      </div>
+
+      <div class="s3-card highlight">
+        <div class="s3-card-num">05</div>
+        <div class="s3-card-title">Winnr Sports &mdash; Boxing &amp; Wellness</div>
+        <p class="s3-card-body">Formal collaboration combining <em>professional boxing and fitness</em> with proactive
+          mental health support. Discipline and structure and new friendships — sport doing what therapy sometimes
+          can't.</p>
+      </div>
+
+      <div class="s3-card highlight">
+        <div class="s3-card-num">06</div>
+        <div class="s3-card-title">Leon Newman &mdash; Elite Coaching</div>
+        <p class="s3-card-body"><em>British Powerlifting Champion.</em> Brings elite strength coaching and mentorship to
+          ALIVE&rsquo;s Birmingham youth clubs at grassroots level. It's not about building muscles, it is about
+          building confidence and belief. For young people to persist and struggle and dedicate themselves to doing
+          something they once thought impossible, is something we can't measure in pounds or kilos.</p>
+      </div>
+
+    </div>
+
+    <div class="s3-footer">
+      <strong>ALIVE Wellness Centre CIC</strong>
+      <span>Section 3 &mdash; Services &amp; Alliances</span>
+      <span>alivewellnesscentre.org.uk</span>
+    </div>
+
+  </div>
+
+  <style>
+    .s4-page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 10mm auto;
+      background: white;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+      display: flex;
+      flex-direction: column;
+      padding: 14mm 20mm;
+    }
+
+    @media print {
+      .s4-page {
+        margin: 0;
+        box-shadow: none;
+        page-break-after: always;
+      }
+    }
+
+    .s4-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--teal);
+    }
+
+    .s4-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .s4-label::before {
+      content: '';
+      width: 22px;
+      height: 2px;
+      background: var(--teal);
+    }
+
+    .s4-page-ref {
+      font-size: 0.62rem;
+      color: var(--mid-grey);
+      letter-spacing: 0.08em;
+    }
+
+    .s4-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      font-weight: 900;
+      color: var(--teal-dark);
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .s4-subheading {
+      font-size: 1rem;
+      color: var(--mid-grey);
+      font-weight: 300;
+      font-style: italic;
+      margin-bottom: 22px;
+    }
+
+    .s4-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid rgba(26, 92, 92, 0.15);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .s4-stat {
+      padding: 22px 18px;
+      border-right: 1px solid rgba(26, 92, 92, 0.15);
+      text-align: center;
+    }
+
+    .s4-stat:last-child {
+      border-right: none;
+    }
+
+    .s4-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.6rem;
+      font-weight: 900;
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .s4-stat-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--mid-grey);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      line-height: 1.5;
+    }
+
+    .s4-awards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .s4-award {
+      background: var(--teal-light);
+      border: 1px solid rgba(26, 92, 92, 0.15);
+      border-radius: 3px;
+      padding: 18px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .s4-award-icon {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      background: var(--amber);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .s4-award-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 7px;
+    }
+
+    .s4-award-body {
+      font-size: 0.8rem;
+      color: var(--mid-grey);
+      line-height: 1.7;
+    }
+
+    .s4-pull {
+      background: var(--teal-dark);
+      border-radius: 3px;
+      padding: 18px 22px;
+      margin-bottom: 20px;
+    }
+
+    .s4-pull p {
+      font-size: 0.92rem;
+      color: rgba(255, 255, 255, 0.82);
+      line-height: 1.75;
+      text-align: center;
+    }
+
+    .s4-pull p strong {
+      color: var(--amber);
+    }
+
+    .s4-creds {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .s4-cred {
+      background: var(--teal-dark);
+      color: rgba(255, 255, 255, 0.82);
+      padding: 11px 12px;
+      border-radius: 3px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .s4-footer {
+      margin-top: auto;
+      padding-top: 10px;
+      border-top: 1px solid rgba(26, 92, 92, 0.15);
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.62rem;
+      color: var(--mid-grey);
+      letter-spacing: 0.06em;
+    }
+
+    .s4-footer strong {
+      color: var(--teal);
+      font-family: 'Playfair Display', serif;
+      font-size: 0.75rem;
+    }
+
+    .s4-image-strip {
+      flex: 1;
+      margin-top: 18px;
+      border-radius: 3px;
+      overflow: hidden;
+      min-height: 80px;
+    }
+
+    .s4-image-strip img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      display: block;
+    }
+  </style>
+
+  <div class="s4-page">
+
+    <div class="s4-topbar">
+      <div class="s4-label">Proof of Impact</div>
+      <div class="s4-page-ref">ALIVE Wellness Centre CIC &nbsp;&middot;&nbsp; Avire Application 2026</div>
+    </div>
+
+    <h2 class="s4-heading">The Impact Ledger</h2>
+    <p class="s4-subheading">Proven. Recognised. Trusted by Birmingham&rsquo;s civic institutions.</p>
+
+    <div class="s4-stats">
+      <div class="s4-stat">
+        <div class="s4-stat-num">600+</div>
+        <div class="s4-stat-label">Children reached across Birmingham schools</div>
+      </div>
+      <div class="s4-stat">
+        <div class="s4-stat-num">15</div>
+        <div class="s4-stat-label">Schools with workshops delivered</div>
+      </div>
+      <div class="s4-stat">
+        <div class="s4-stat-num">2</div>
+        <div class="s4-stat-label">Major civic awards for community impact</div>
+      </div>
+    </div>
+
+    <div class="s4-awards">
+      <div class="s4-award">
+        <div class="s4-award-icon">★</div>
+        <div>
+          <div class="s4-award-title">LoveBrum Hidden Hero Award</div>
+          <p class="s4-award-body">Named by Birmingham&rsquo;s LoveBrum initiative recognising grassroots community
+            champions. Funded school workshop programme reached over 600 children across Birmingham schools.</p>
+        </div>
+      </div>
+      <div class="s4-award">
+        <div class="s4-award-icon">🏅</div>
+        <div>
+          <div class="s4-award-title">PCC Citizen&rsquo;s Award 2025</div>
+          <p class="s4-award-body">Awarded by the West Midlands Police and Crime Commissioner&rsquo;s Office in
+            recognition of Laura&rsquo;s sustained community action on knife crime and youth violence across Birmingham.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="s4-pull">
+      <p>ALIVE is not a pilot programme. It is <strong>already working</strong> — and recognised at the highest levels
+        of Birmingham&rsquo;s civic and law enforcement community. What it needs now is <strong>a permanent
+          home</strong> from which to scale that impact.</p>
+    </div>
+
+    <div class="s4-creds">
+      <div class="s4-cred">BASc (Hons)<br>Counselling &amp; Psychotherapy</div>
+      <div class="s4-cred">MSc Psychology<br>1st Class Distinction</div>
+      <div class="s4-cred">BACP Registered<br>Member</div>
+      <div class="s4-cred">Level 3 Designated<br>Safeguarding Lead</div>
+    </div>
+
+
+    <div class="s4-image-strip">
+      <img src="Krav-Kids02.png" alt="Krav4Kids session — ALIVE Wellness Centre">
+    </div>
+
+    <div class="s4-footer">
+      <strong>ALIVE Wellness Centre CIC</strong>
+      <span>Section 4 &mdash; Impact Ledger</span>
+      <span>alivewellnesscentre.org.uk</span>
+    </div>
+
+  </div>
+
+  <style>
+    .s5a-page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 10mm auto;
+      background: white;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+      display: flex;
+      flex-direction: column;
+      padding: 14mm 20mm;
+    }
+
+    @media print {
+      .s5a-page {
+        margin: 0;
+        box-shadow: none;
+        page-break-after: always;
+      }
+    }
+
+    .s5a-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--teal);
+    }
+
+    .s5a-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .s5a-label::before {
+      content: '';
+      width: 22px;
+      height: 2px;
+      background: var(--teal);
+    }
+
+    .s5a-page-ref {
+      font-size: 0.62rem;
+      color: var(--mid-grey);
+      letter-spacing: 0.08em;
+    }
+
+    .s5a-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      font-weight: 900;
+      color: var(--teal-dark);
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .s5a-subheading {
+      font-size: 1rem;
+      color: var(--mid-grey);
+      font-style: italic;
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+
+    .s5a-transition {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .s5a-box {
+      border-radius: 3px;
+      padding: 16px 18px;
+    }
+
+    .s5a-box.from {
+      background: var(--off-white);
+      border: 1px solid rgba(26, 92, 92, 0.15);
+    }
+
+    .s5a-box.to {
+      background: var(--teal-dark);
+      border: 1px solid var(--teal-dark);
+    }
+
+    .s5a-box-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .s5a-box.from .s5a-box-label {
+      color: var(--mid-grey);
+    }
+
+    .s5a-box.to .s5a-box-label {
+      color: var(--amber);
+    }
+
+    .s5a-box.from p {
+      font-size: 0.85rem;
+      color: var(--charcoal);
+      line-height: 1.75;
+    }
+
+    .s5a-box.to p {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.78);
+      line-height: 1.75;
+    }
+
+    .s5a-location {
+      background: var(--amber);
+      border-radius: 3px;
+      padding: 12px 18px;
+      margin-bottom: 20px;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .s5a-location-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .s5a-location p {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      line-height: 1.5;
+    }
+
+    .s5a-floors {
+      border: 1px solid rgba(26, 92, 92, 0.15);
+      border-radius: 3px;
+      overflow: hidden;
+      flex: 1;
+    }
+
+    .s5a-floor-header {
+      background: var(--teal-dark);
+      color: var(--amber);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 9px 16px;
+    }
+
+    .s5a-floor-row {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      border-bottom: 1px solid rgba(26, 92, 92, 0.12);
+    }
+
+    .s5a-floor-row:last-child {
+      border-bottom: none;
+    }
+
+    .s5a-floor-tag {
+      background: var(--teal);
+      color: white;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-align: center;
+      padding: 12px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      line-height: 1.4;
+    }
+
+    .s5a-floor-detail {
+      padding: 10px 14px;
+      font-size: 0.82rem;
+      color: var(--charcoal);
+      line-height: 1.7;
+      background: white;
+    }
+
+    .s5a-floor-detail strong {
+      color: var(--teal-dark);
+    }
+
+    .s5a-floor-detail em {
+      color: var(--mid-grey);
+      font-style: normal;
+      font-size: 0.75rem;
+    }
+
+    .s5a-reassurance {
+      background: var(--teal-light);
+      border-left: 4px solid var(--teal);
+      border-radius: 0 3px 3px 0;
+      padding: 13px 16px;
+      margin-top: 14px;
+    }
+
+    .s5a-reassurance p {
+      font-size: 0.82rem;
+      color: var(--teal-dark);
+      line-height: 1.7;
+      font-weight: 500;
+    }
+
+    .s5a-reassurance p strong {
+      color: var(--amber);
+    }
+
+    .s5a-footer {
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(26, 92, 92, 0.15);
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.62rem;
+      color: var(--mid-grey);
+      letter-spacing: 0.06em;
+    }
+
+    .s5a-footer strong {
+      color: var(--teal);
+      font-family: 'Playfair Display', serif;
+      font-size: 0.75rem;
+    }
+  </style>
+
+  <div class="s5a-page">
+
+    <div class="s5a-topbar">
+      <div class="s5a-label">The Property Case</div>
+      <div class="s5a-page-ref">ALIVE Wellness Centre CIC &nbsp;&middot;&nbsp; Avire Application 2026</div>
+    </div>
+
+    <h2 class="s5a-heading">Eagle Court — A Permanent Home</h2>
+    <p class="s5a-subheading">From mobile outreach to a permanent base.</p>
+
+    <div class="s5a-transition">
+      <div class="s5a-box from">
+        <div class="s5a-box-label">Current Model — Mobile &amp; Hosted</div>
+        <p>ALIVE currently delivers all services within host locations — schools, youth centres, and community hubs
+          across Birmingham. This outreach model is effective and will continue. But it cannot provide the sustained,
+          private, scheduled environment that the most vulnerable clients require. Those needing deeper, more focused
+          therapeutic support have nowhere consistent to turn.</p>
+      </div>
+      <div class="s5a-box to">
+        <div class="s5a-box-label">Eagle Court — Rooted &amp; Resourced</div>
+        <p>A permanent base transforms ALIVE&rsquo;s capacity entirely. Counselling delivered in-situ on a regular
+          schedule. Activities and workshops running consistently, not subject to host availability. A safe, known
+          address that clients, donors, partners, and commissioners can rely on. The outreach continues — and is now
+          backed by a home.</p>
+      </div>
+    </div>
+
+    <div class="s5a-location">
+      <div class="s5a-location-icon">📍</div>
+      <p>Eagle Court sits on the <strong>A45</strong> — one of Birmingham&rsquo;s principal arterial routes, served by
+        frequent public transport links and with abundant parking. Accessible to the communities ALIVE serves across the
+        city and the wider West Midlands.</p>
+    </div>
+
+    <div class="s5a-floors">
+      <div class="s5a-floor-header">Eagle Court &mdash; Proposed Use by Floor</div>
+
+
+
+      <div class="s5a-floor-row">
+        <div class="s5a-floor-tag">Ground<br>Floor</div>
+        <div class="s5a-floor-detail">
+          <strong>Counselling Suites &amp; Adult Education</strong> — Sound-proofed, private therapy rooms for
+          individual, couples, and family counselling. Dedicated domestic violence sanctuary space. Multipurpose
+          classroom and seminar rooms for adult education, vocational training, and professional development workshops.
+          <em>All rooms donor-funded and equipped prior to occupation.</em>
+        </div>
+      </div>
+
+      <div class="s5a-floor-row">
+        <div class="s5a-floor-tag">Basement</div>
+        <div class="s5a-floor-detail">
+          <strong>Creative Arts &amp; Music Production Studio</strong> — Donor-funded music production and recording
+          studio alongside a dedicated art therapy workspace. Creative expression is a clinically evidenced component of
+          trauma recovery. This space makes it a practical part of what ALIVE does every day. <em>Full equipment
+            specification provided on request.</em>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="s5a-reassurance">
+      <p><strong>No structural or fabric alterations required.</strong> ALIVE proposes to occupy Eagle Court as found.
+        All fit-out is equipment-based and fully reversible. Committed donors are ready to fund and equip all spaces
+        prior to opening. ALIVE accepts responsibility for utility costs in line with the standard Avire occupancy
+        model.</p>
+    </div>
+
+    <div class="s5a-footer">
+      <strong>ALIVE Wellness Centre CIC</strong>
+      <span>Section 5a &mdash; The Property Case</span>
+      <span>alivewellnesscentre.org.uk</span>
+    </div>
+
+  </div>
+
+  <style>
+    .s5b-page {
+      width: 210mm;
+      min-height: 297mm;
+      max-height: 445mm;
+      padding: 14mm 20mm;
+      background: var(--off-white);
+      position: relative;
+      overflow: hidden;
+      box-sizing: border-box;
+      margin: 0 auto;
+    }
+
+    @media print {
+      .s5b-page {
+        margin: 0;
+        box-shadow: none;
+        page-break-after: always;
+      }
+    }
+
+    .s5b-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--teal);
+    }
+
+    .s5b-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .s5b-label::before {
+      content: '';
+      width: 22px;
+      height: 2px;
+      background: var(--teal);
+    }
+
+    .s5b-page-ref {
+      font-size: 0.62rem;
+      color: var(--mid-grey);
+      letter-spacing: 0.08em;
+    }
+
+    .s5b-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--teal-dark);
+      margin-bottom: 8px;
+      line-height: 1.1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .s5b-subheading {
+      font-size: 0.9rem;
+      color: var(--mid-grey);
+      font-style: italic;
+      margin-bottom: 10px;
+      line-height: 1.5;
+      position: relative;
+      z-index: 1;
+    }
+
+    .s5b-stat-band {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid rgba(26, 92, 92, 0.15);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .s5b-stat {
+      padding: 16px 14px;
+      border-right: 1px solid rgba(26, 92, 92, 0.15);
+      background: white;
+      text-align: center;
+    }
+
+    .s5b-stat:last-child {
+      border-right: none;
+    }
+
+    .s5b-stat .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .s5b-stat .lbl {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--mid-grey);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      line-height: 1.4;
+    }
+
+    .s5b-map-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .s5b-map-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 3px;
+      border: 2px solid rgba(26, 92, 92, 0.2);
+    }
+
+    .s5b-map-caption {
+      font-size: 0.65rem;
+      color: var(--mid-grey);
+      font-style: italic;
+      margin-top: 6px;
+      line-height: 1.5;
+    }
+
+    .s5b-right-col {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .s5b-communities {
+      background: var(--teal-dark);
+      border-radius: 3px;
+      padding: 14px 16px;
+    }
+
+    .s5b-communities-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 10px;
+    }
+
+    .s5b-community-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5px;
+    }
+
+    .s5b-community-item {
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.82);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      line-height: 1.4;
+    }
+
+    .s5b-community-item::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--amber);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .s5b-challenge {
+      background: white;
+      border: 1px solid rgba(26, 92, 92, 0.15);
+      border-radius: 3px;
+      padding: 14px 16px;
+    }
+
+    .s5b-challenge-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 10px;
+    }
+
+    .s5b-challenge p {
+      font-size: 0.88rem;
+      color: var(--charcoal);
+      line-height: 1.8;
+    }
+
+    .s5b-challenge p strong {
+      color: var(--teal-dark);
+    }
+
+    .s5b-amber-box {
+      background: var(--amber);
+      padding: 20px 24px;
+      border-radius: 4px;
+      flex: 1;
+    }
+
+    .s5b-amber-box p {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      line-height: 1.8;
+    }
+
+    .s5b-amber-box p strong {
+      color: var(--teal-dark);
+    }
+
+    .s5b-footer {
+      margin-top: auto;
+      padding-top: 10px;
+      border-top: 1px solid rgba(26, 92, 92, 0.15);
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.62rem;
+      color: var(--mid-grey);
+      letter-spacing: 0.06em;
+    }
+
+    .s5b-footer strong {
+      color: var(--teal);
+      font-family: 'Playfair Display', serif;
+      font-size: 0.75rem;
+    }
+
+    .s5b-body-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .s5b-left {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .s5b-right {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .s5b-knife-stat {
+      background: var(--teal-dark);
+      padding: 20px 24px;
+      border-radius: 4px;
+    }
+
+    .s5b-knife-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--amber);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .s5b-knife-label {
+      font-size: 0.85rem;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    .s5b-amber-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 10px;
+    }
+
+    .s5c-page {
+      width: 210mm;
+      min-height: 297mm;
+      max-height: 445mm;
+      padding: 14mm 20mm;
+      background: #ffffff;
+      position: relative;
+      box-sizing: border-box;
+      margin: 40px auto 0 auto;
+      overflow: hidden;
+    }
+
+    .s5c-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--teal);
+      padding-bottom: 6px;
+      margin-bottom: 14px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+
+    .s5c-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--teal-dark);
+      margin-bottom: 14px;
+      line-height: 1.1;
+    }
+
+    .s5c-body-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 14px;
+    }
+
+    .s5c-left,
+    .s5c-right {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .s5c-pull-quote {
+      background: var(--teal-dark);
+      padding: 22px 24px;
+      border-radius: 4px;
+    }
+
+    .s5c-pull-quote blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      font-style: italic;
+      color: #ffffff;
+      line-height: 1.75;
+      margin-bottom: 12px;
+    }
+
+    .s5c-pull-quote cite {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--amber);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-style: normal;
+    }
+
+    .s5c-person-box {
+      border: 1px solid rgba(26, 92, 92, 0.15);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .s5c-person-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .s5c-person-body {
+      padding: 16px 18px;
+    }
+
+    .s5c-person-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--teal-dark);
+      margin-bottom: 4px;
+    }
+
+    .s5c-person-role {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--amber);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+
+    .s5c-person-body p {
+      font-size: 0.84rem;
+      color: var(--charcoal);
+      line-height: 1.75;
+    }
+
+    .s5c-media-box {
+      border: 1px solid rgba(26, 92, 92, 0.15);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .s5c-media-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      max-height: 160px;
+      object-position: center top;
+    }
+
+    .s5c-media-body {
+      padding: 16px 18px;
+    }
+
+    .s5c-media-source {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 6px;
+    }
+
+    .s5c-media-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .s5c-media-body p {
+      font-size: 0.83rem;
+      color: var(--mid-grey);
+      line-height: 1.7;
+    }
+
+    .s5c-partners-box {
+      background: var(--teal-light);
+      border-left: 4px solid var(--teal);
+      padding: 16px 18px;
+      border-radius: 0 4px 4px 0;
+      flex: 1;
+    }
+
+    .s5c-partners-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--teal-dark);
+      margin-bottom: 10px;
+    }
+
+    .s5c-partners-box p {
+      font-size: 0.84rem;
+      color: var(--charcoal);
+      line-height: 1.75;
+    }
+
+    .s5c-bottom-strip {
+      margin-top: 16px;
+      width: 100%;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .s5c-bottom-strip img {
+      width: 100%;
+      height: auto;
+      max-height: 120px;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+    }
+
+    .s5c-footer {
+      position: absolute;
+      bottom: 10mm;
+      left: 20mm;
+      right: 20mm;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.68rem;
+      color: var(--mid-grey);
+      border-top: 1px solid rgba(26, 92, 92, 0.15);
+      padding-top: 6px;
+    }
+
+    .s5c-lovebrum-block {
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .s5c-lovebrum-caption {
+      font-size: 0.75rem;
+      color: var(--mid-grey);
+      line-height: 1.5;
+      padding: 8px 0 0 0;
+      font-style: italic;
+    }
+
+    .s5c-lovebrum-body {
+      padding: 12px 16px;
+      border: 1px solid rgba(26, 92, 92, 0.15);
+      border-top: none;
+      border-radius: 0 0 4px 4px;
+    }
+
+    .s5c-lovebrum-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 8px;
+    }
+
+    .s5c-lovebrum-body p {
+      font-size: 0.83rem;
+      color: var(--mid-grey);
+      line-height: 1.7;
+    }
+
+    .s5d-page {
+      width: 210mm;
+      min-height: 297mm;
+      max-height: 445mm;
+      padding: 14mm 20mm;
+      background: var(--off-white);
+      position: relative;
+      box-sizing: border-box;
+      margin: 40px auto 0 auto;
+      overflow: hidden;
+    }
+
+    .s5d-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--teal);
+      padding-bottom: 6px;
+      margin-bottom: 14px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+
+    .s5d-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--teal-dark);
+      margin-bottom: 6px;
+      line-height: 1.1;
+    }
+
+    .s5d-subheading {
+      font-size: 0.9rem;
+      color: var(--mid-grey);
+      font-style: italic;
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    .s5d-body-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .s5d-left,
+    .s5d-right {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .s5d-box {
+      background: #ffffff;
+      border: 1px solid rgba(26, 92, 92, 0.15);
+      border-radius: 4px;
+      padding: 18px 20px;
+    }
+
+    .s5d-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--teal-dark);
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--amber);
+      display: inline-block;
+    }
+
+    .s5d-box p {
+      font-size: 0.84rem;
+      color: var(--charcoal);
+      line-height: 1.75;
+      margin-bottom: 8px;
+    }
+
+    .s5d-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .s5d-box ul {
+      margin: 8px 0 0 16px;
+      padding: 0;
+    }
+
+    .s5d-box ul li {
+      font-size: 0.84rem;
+      color: var(--charcoal);
+      line-height: 1.75;
+      margin-bottom: 4px;
+    }
+
+    .s5d-teal-box {
+      background: var(--teal-dark);
+      border-radius: 4px;
+      padding: 18px 20px;
+    }
+
+    .s5d-teal-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--amber);
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(232, 160, 32, 0.3);
+      display: inline-block;
+    }
+
+    .s5d-teal-box p {
+      font-size: 0.84rem;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.75;
+      margin-bottom: 8px;
+    }
+
+    .s5d-teal-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .s5d-amber-box {
+      background: var(--amber);
+      border-radius: 4px;
+      padding: 12px 14px;
+    }
+
+    .s5d-amber-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(28, 28, 28, 0.2);
+      display: inline-block;
+    }
+
+    .s5d-amber-box p {
+      font-size: 0.80rem;
+      color: var(--charcoal);
+      line-height: 1.75;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .s5d-amber-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .s5d-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .s5d-chip {
+      background: var(--teal-light);
+      border: 1px solid rgba(26, 92, 92, 0.2);
+      color: var(--teal-dark);
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 100px;
+      letter-spacing: 0.03em;
+    }
+
+    .s5d-footer {
+      position: absolute;
+      bottom: 10mm;
+      left: 20mm;
+      right: 20mm;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.68rem;
+      color: var(--mid-grey);
+      border-top: 1px solid rgba(26, 92, 92, 0.15);
+      padding-top: 6px;
+    }
+
+    .s6-page {
+      width: 210mm;
+      min-height: 340mm;
+      max-height: none;
+      padding: 14mm 20mm 18mm 20mm;
+      background: var(--teal-dark);
+      position: relative;
+      box-sizing: border-box;
+      margin: 40px auto 0 auto;
+      overflow: hidden;
+    }
+
+    .s6-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid rgba(232, 160, 32, 0.4);
+      padding-bottom: 6px;
+      margin-bottom: 20px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .s6-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 6px;
+      line-height: 1.1;
+    }
+
+    .s6-subheading {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.6);
+      font-style: italic;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    .s6-logo-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .s6-logo-cell {
+      background: rgba(255, 255, 255, 0.04);
+      padding: 24px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 80px;
+    }
+
+    .s6-logo-cell img {
+      max-height: 44px;
+      max-width: 120px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .s6-logo-text {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.5);
+      text-align: center;
+      letter-spacing: 0.04em;
+      line-height: 1.4;
+    }
+
+    .s6-cta-band {
+      background: var(--amber);
+      border-radius: 4px;
+      padding: 22px 26px;
+      margin-bottom: 20px;
+    }
+
+    .s6-cta-band h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--charcoal);
+      margin-bottom: 8px;
+    }
+
+    .s6-cta-band p {
+      font-size: 0.88rem;
+      color: var(--charcoal);
+      line-height: 1.7;
+      font-weight: 500;
+    }
+
+    .s6-contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-bottom: 10px;
+    }
+
+    .s6-contact-box {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      padding: 12px 16px;
+    }
+
+    .s6-contact-box h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--amber);
+      margin-bottom: 4px;
+    }
+
+    .s6-contact-box p {
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.5;
+    }
+
+    .s6-contact-name {
+      font-weight: 700;
+      color: #ffffff !important;
+    }
+
+    .s6-contact-label {
+      color: rgba(255, 255, 255, 0.52);
+      font-weight: 700;
+    }
+
+    .s6-contact-box a {
+      color: rgba(255, 255, 255, 0.86);
+      text-decoration: none;
+    }
+
+    .s6-footer {
+      position: absolute;
+      bottom: 10mm;
+      left: 20mm;
+      right: 20mm;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.68rem;
+      color: rgba(255, 255, 255, 0.35);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 6px;
+    }
+
+    .s6-support-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 900;
+      color: #ffffff;
+      margin: 2px 0 10px 0;
+    }
+
+    .s6-support-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .s6-support-card {
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 4px;
+      padding: 14px;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .s6-support-kicker {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .s6-support-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.18;
+    }
+
+    .s6-support-copy {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.72);
+      line-height: 1.55;
+    }
+
+    .s6-support-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      align-self: flex-start;
+      border: 1px solid rgba(232, 160, 32, 0.55);
+      border-radius: 4px;
+      padding: 5px 8px;
+      color: var(--amber);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-top: auto;
+    }
+
+    .s6-letter-thumb-link {
+      display: block;
+      width: 100%;
+      height: 205px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 4px;
+      overflow: hidden;
+      background: #ffffff;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
+    }
+
+    .s6-letter-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center center;
+      display: block;
+    }
+
+    .s6-video {
+      width: 100%;
+      height: 205px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 4px;
+      display: block;
+      background: #000000;
+      object-fit: cover;
+    }
+
+    .s6-print-poster {
+      display: none;
+      width: 100%;
+      height: 205px;
+      border-radius: 4px;
+      object-fit: cover;
+      background: #000000;
+    }
+
+    @media print {
+      body {
+        background: none !important;
+      }
+
+      .s1-page,
+      .s2-page,
+      .s3-page,
+      .s4-page,
+      .s5a-page,
+      .s5b-page,
+      .s5c-page,
+      .s5d-page,
+      .s6-page {
+        margin: 0 !important;
+        box-shadow: none !important;
+        page-break-after: always !important;
+        break-after: always !important;
+        max-height: none !important;
+        overflow: visible !important;
+      }
+
+
+      .s6-video {
+        display: none !important;
+      }
+
+      .s6-print-poster {
+        display: block !important;
+      }
+    }
+  </style>
+
+  <div class="s5b-page">
+
+    <div class="s5b-topbar">
+      <div class="s5b-label">East Birmingham — The Case for Here</div>
+      <div class="s5b-page-ref">ALIVE Wellness Centre CIC &nbsp;&middot;&nbsp; Avire Application 2026</div>
+    </div>
+
+    <h2 class="s5b-heading">Location is Strategy</h2>
+    <p class="s5b-subheading">Eagle Court sits in easy reach of some of Birmingham&rsquo;s most underserved communities
+      —
+      directly on the city&rsquo;s named inclusive growth corridor.</p>
+
+    <div class="s5b-stat-band">
+      <div class="s5b-stat">
+        <div class="num">2nd</div>
+        <div class="lbl">Most deprived local authority in England (MHCLG 2025)</div>
+      </div>
+      <div class="s5b-stat">
+        <div class="num">10 yrs</div>
+        <div class="lbl">Life expectancy gap between East Birmingham and Sutton Coldfield — same city</div>
+      </div>
+      <div class="s5b-stat">
+        <div class="num">3x</div>
+        <div class="lbl">More likely to die prematurely or contact mental health services than national average</div>
+      </div>
+    </div>
+
+    <div class="s5b-body-grid">
+
+      <div class="s5b-left">
+
+        <div class="s5b-challenge">
+          <div class="s5b-challenge-label">The Challenge Here</div>
+          <p>A third of East Birmingham residents are <strong>under 16</strong> — one of the highest proportions of
+            children anywhere in the country. Over <strong>one in three children</strong> live in poverty. Economic
+            inactivity runs at <strong>35%</strong> versus 23% for England as a whole, with youth unemployment at almost
+            twice the national average.</p>
+          <p style="margin-top:10px;">People living in areas of very high deprivation are three times more likely to be
+            admitted for preventable conditions, die prematurely from preventable causes, or be in contact with mental
+            health services. Mental health problems — from anxiety and depression through to serious conditions — are
+            disproportionately high across the area.</p>
+        </div>
+
+        <div class="s5b-knife-stat">
+          <div class="s5b-knife-number">6,185</div>
+          <div class="s5b-knife-label">knife crime incidents recorded in Birmingham across three years — over half of
+            all West Midlands cases. Source: West Midlands Police FOI 2020–2023</div>
+        </div>
+
+        <div class="s5b-challenge">
+          <div class="s5b-challenge-label">Police Designation</div>
+          <p>West Midlands Police have designated adjacent <strong>Bordesley Green a Crime Impact Area</strong>, with a
+            specific focus on tackling violence and delivering long-term improvements in community safety. This
+            designation reflects sustained, concentrated violent crime levels placing Bordesley Green among the most
+            acutely affected communities in the region.</p>
+          <p style="margin-top:10px;">This is the environment ALIVE is built for — where statutory services are
+            stretched and
+            community-led intervention matters most. A permanent base at Eagle Court puts ALIVE where the need is, not
+            at a distance from it.</p>
+        </div>
+
+      </div>
+
+      <div class="s5b-right">
+
+        <div class="s5b-communities">
+          <div class="s5b-communities-label">Communities Within Catchment</div>
+          <div class="s5b-community-list">
+            <div class="s5b-community-item">Hay Mills</div>
+            <div class="s5b-community-item">Tyseley</div>
+            <div class="s5b-community-item">Yardley</div>
+            <div class="s5b-community-item">Stechford</div>
+            <div class="s5b-community-item">Garretts Green</div>
+            <div class="s5b-community-item">Kitts Green</div>
+            <div class="s5b-community-item">Chelmsley Wood</div>
+            <div class="s5b-community-item">Sheldon</div>
+          </div>
+        </div>
+
+        <div class="s5b-map-frame">
+          <img src="Bham-Poverty-Map-Crop-Dot.webp" alt="Birmingham deprivation map with Eagle Court marker"
+            style="width:100%;height:auto;display:block;">
+          <div class="s5b-map-caption">Index of Multiple Deprivation 2025. Dark blue = highest deprivation. Yellow
+            marker indicates Eagle Court on the A45 corridor.</div>
+        </div>
+
+        <div class="s5b-amber-box">
+          <div class="s5b-amber-label">Birmingham City Council's East Birmingham Inclusive Growth Strategy</div>
+          <p>The Strategy sets a 20-year vision and explicitly identifies <strong>voluntary and community sector
+              organisations</strong> as essential delivery partners for Health &amp; Wellbeing and Employment &amp;
+            Skills. It calls for <strong>multi-agency community hubs</strong> as the primary vehicle for change. Eagle
+            Court sits on the <strong>A45 Sprint corridor</strong> — a named infrastructure priority — placing ALIVE at
+            the geographic and strategic centre of that vision. In 2020, the East Birmingham Board committed to major
+            change in the area. Hundreds of millions of pounds are spent annually in East Birmingham by Board partners
+            alone. The Strategy names East Birmingham as an Inclusive Growth Corridor where partnership between public
+            sector, business and community organisations is being actively pioneered.</p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="s5b-footer">
+      <strong>ALIVE Wellness Centre CIC</strong>
+      <span>Section 5b &mdash; East Birmingham: The Case for Here</span>
+      <span>alivewellnesscentre.org.uk</span>
+    </div>
+
+  </div>
+
+  <div class="s5c-page">
+
+    <div class="s5c-topbar">
+      <span>— Reach, Recognition &amp; Media</span>
+      <span>ALIVE Wellness Centre CIC &nbsp;&middot;&nbsp; Avire Application 2026</span>
+    </div>
+
+    <h2 class="s5c-heading">Reach, Recognition &amp; Media</h2>
+
+    <div class="s5c-body-grid">
+
+      <div class="s5c-left">
+
+        <div class="s5c-pull-quote">
+          <blockquote>&ldquo;Laura has shown extraordinary courage and commitment in the face of unimaginable personal
+            pain. Her work through The Alive Wellness CIC is changing lives, breaking cycles of violence, and giving
+            young people hope for a safer future. She is an inspiration to us all.&rdquo;</blockquote>
+          <cite>Simon Foster &mdash; West Midlands Police &amp; Crime Commissioner, PCC Citizen&rsquo;s Award
+            2025</cite>
+        </div>
+
+        <div class="s5c-person-box">
+          <img class="s5c-person-img" src="Laura-Tina.jpeg" alt="Laura Mace with Tina Costello OBE">
+          <div class="s5c-person-body">
+            <div class="s5c-person-name">Tina Costello OBE</div>
+            <div class="s5c-person-role">Mentor &amp; Strategic Adviser to Laura Mace</div>
+            <p>Chief Executive of Heart of England Community Foundation since 2013. Over 25 years of sector leadership.
+              More than &pound;60 million invested across the West Midlands and Warwickshire during her tenure, with
+              the Foundation&rsquo;s endowment grown from &pound;2 million to over &pound;20 million. Awarded OBE in the
+              King&rsquo;s Birthday Honours 2024. Tina acts as mentor and strategic adviser to Laura, providing ALIVE
+              with direct access to the region&rsquo;s senior philanthropic leadership.</p>
+          </div>
+        </div>
+
+        <div class="s5c-partners-box">
+          <h3>Institutional Partners</h3>
+          <p><strong>Archbishop Ilsley School</strong> &mdash; established school partnership supporting ALIVE&rsquo;s
+            delivery of trauma-informed workshops and youth engagement programmes directly into the curriculum.</p>
+          <p style="margin-top:10px;"><strong>Bordesley East Primary Care Network</strong> &mdash; healthcare
+            partnership embedding ALIVE&rsquo;s mental health and wellbeing provision within East Birmingham&rsquo;s
+            primary care infrastructure.</p>
+        </div>
+
+      </div>
+
+      <div class="s5c-right">
+
+        <div class="s5c-media-box">
+          <img class="s5c-media-img" src="Alive-France.jpg"
+            alt="Laura Mace and ALIVE staff with French journalist and West Midlands Police officers during filming"
+            style="width:100%;height:auto;display:block;max-height:200px;object-fit:cover;object-position:center top;">
+          <div class="s5c-media-body">
+            <div class="s5c-media-source">France T&eacute;l&eacute;visions &mdash; Nous, les Europ&eacute;ens</div>
+            <h3>Selected as UK Case Study on Knife Crime Response</h3>
+            <p>France&rsquo;s national public broadcaster selected ALIVE as the UK subject for an episode of <em>Nous,
+                les Europ&eacute;ens</em> &mdash; a flagship documentary series examining how European communities
+              respond to shared modern challenges. Season 7, Episode 7. The programme explored ALIVE&rsquo;s
+              community-led approach to knife crime as a model of grassroots intervention.</p>
+          </div>
+        </div>
+
+        <div class="s5c-media-box" style="flex:1;">
+          <div class="s5c-media-body">
+            <div class="s5c-media-source">BBC &mdash; Media Coverage</div>
+            <h3>Birmingham Mum Turns Knife Crime Tragedy Into Action</h3>
+            <p>ALIVE and Laura Mace have received BBC coverage for the organisation&rsquo;s community impact.
+              Partner Kieran Wood&rsquo;s self-defence sessions for young people were also featured — evidence of how
+              far ALIVE&rsquo;s network reaches across Birmingham.</p>
+          </div>
+        </div>
+
+        <div class="s5c-lovebrum-block">
+          <img src="Laura-LoveBrum4.jpg" alt="Laura Mace at the LoveBrum Hidden Hero award"
+            style="width:100%;height:auto;display:block;border-radius:4px 4px 0 0;">
+          <div class="s5c-lovebrum-body">
+            <div class="s5c-media-source">LoveBrum &mdash; Hidden Hero Award</div>
+            <h3>Recognised by Birmingham&rsquo;s Own</h3>
+            <p>Laura was named a Hidden Hero in recognition of ALIVE&rsquo;s school workshop programme, which reached
+              over 600 children across 15 Birmingham schools &mdash; voted for by the public and endorsed by
+              Birmingham&rsquo;s business community.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="s5c-footer">
+      <strong>ALIVE Wellness Centre CIC</strong>
+      <span>Section 5c &mdash; Reach, Recognition &amp; Media</span>
+      <span>alivewellnesscentre.org.uk</span>
+    </div>
+
+  </div>
+
+  <div class="s5d-page">
+
+    <div class="s5d-topbar">
+      <span>— Governance, Compliance &amp; Due Diligence</span>
+      <span>ALIVE Wellness Centre CIC &nbsp;&middot;&nbsp; Avire Application 2026</span>
+    </div>
+
+    <h2 class="s5d-heading">Governance, Compliance &amp; Due Diligence</h2>
+    <p class="s5d-subheading">ALIVE Wellness Centre CIC is a properly constituted, fully compliant organisation.
+      Every box a landlord or intermediary needs ticked is ticked.</p>
+
+    <div class="s5d-body-grid">
+
+      <div class="s5d-left">
+
+        <div class="s5d-box">
+          <h3>CIC Registration &amp; Legal Structure</h3>
+          <p>ALIVE Wellness Centre CIC is registered at Companies House as a Community Interest Company — a legal
+            structure that locks assets and surpluses for community benefit. The asset lock means no individual can
+            extract value from the organisation. All surplus is reinvested into expanding services and accessibility.
+          </p>
+          <p>The CIC structure gives Avire and any prospective landlord a simple assurance: ALIVE is here for its
+            community beneficiaries, not to generate private profit.</p>
+          <ul>
+            <li>Companies House compliant — no overdue filings or returns</li>
+            <li>Minimum 3 unrelated trustees</li>
+            <li>Asset lock in place per CIC regulations</li>
+            <li>Community Interest Statement filed and active</li>
+          </ul>
+        </div>
+
+        <div class="s5d-box">
+          <h3>Safeguarding</h3>
+          <p>Safeguarding is embedded at every level of ALIVE's operation. Laura Mace holds a <strong>Level 3
+              Designated Safeguarding Lead</strong> qualification. All staff and volunteers are DBS checked. A formal
+            safeguarding policy is in place, reviewed regularly and available on request.</p>
+          <p>ALIVE works directly with children and young people in school and community settings. Its safeguarding
+            framework meets the standards required by statutory partners including the NHS, West Midlands Police, and
+            Birmingham City Council.</p>
+        </div>
+
+        <div class="s5d-box">
+          <h3>Equality &amp; Diversity</h3>
+          <p>ALIVE operates in full compliance with the <strong>Equality Act 2010</strong>. Its Community Interest
+            Statement explicitly commits to inclusive, accessible provision for individuals facing barriers to
+            traditional services — regardless of background, identity, or circumstance.</p>
+          <p>The organisation serves one of the most ethnically and culturally diverse communities in England. Equality
+            and diversity are not policy addendums — they are operational reality.</p>
+        </div>
+
+      </div>
+
+      <div class="s5d-right">
+
+        <div class="s5d-teal-box">
+          <h3>Financial Model &amp; Zero Capital Risk</h3>
+          <p>ALIVE's proposed occupancy of Eagle Court carries <strong>zero capital risk to the landlord</strong>. The
+            organisation proposes to occupy the building as found. All fit-out is equipment-based and fully reversible
+            — no structural alterations required or planned.</p>
+          <p>Committed donors are ready to fund and equip all spaces prior to opening. ALIVE accepts full responsibility
+            for utility costs in line with the standard Avire occupancy model. No rent, rates, or service charge
+            liability falls to the landlord.</p>
+          <p>The business rates relief available to a landlord hosting a CIC tenant represents a meaningful and
+            immediate financial benefit — with no exposure to the risks typically associated with commercial tenancies.
+          </p>
+        </div>
+
+        <div class="s5d-box">
+          <h3>Funding Diversity</h3>
+          <p>ALIVE's funding base is deliberately diversified — reducing dependency on any single source. The funders
+            listed below span the voluntary, public, and corporate sectors.</p>
+          <div class="s5d-chip-row">
+            <span class="s5d-chip">National Lottery — Million Hours Fund</span>
+            <span class="s5d-chip">BBC Children in Need</span>
+            <span class="s5d-chip">Sport England</span>
+            <span class="s5d-chip">ASDA Community Fund</span>
+            <span class="s5d-chip">LoveBrum</span>
+            <span class="s5d-chip">West Midlands PCC</span>
+            <span class="s5d-chip">England Boxing</span>
+          </div>
+        </div>
+
+        <div class="s5d-amber-box">
+          <h3>The Landlord Case &mdash; Plain &amp; Simple</h3>
+          <p>Hosting ALIVE brings more than an occupied building. The organisation has been featured on European
+            national television as a model for tackling knife crime — other countries are watching what Birmingham is
+            doing, and ALIVE is the story they came to tell. That kind of profile generates coverage, not just goodwill.
+          </p>
+          <p>We don&rsquo;t need structural or fabric alterations. Everything we plan to do, every space we intend to
+            use, will be equipped by donors before opening.
+          </p>
+          <p>ALIVE&rsquo;s profile is growing fast &mdash; national media, public sector endorsement, and international
+            documentary coverage. Several high-profile patrons are close to being confirmed. Watch this space.</p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="s5d-footer">
+      <strong>ALIVE Wellness Centre CIC</strong>
+      <span>Section 5d &mdash; Governance, Compliance &amp; Due Diligence</span>
+      <span>alivewellnesscentre.org.uk</span>
+    </div>
+
+  </div>
+
+  <div class="s6-page">
+
+    <div class="s6-topbar">
+      <span>— Partners &amp; Supporters</span>
+      <span>ALIVE Wellness Centre CIC &nbsp;&middot;&nbsp; Avire Application 2026</span>
+    </div>
+
+    <h2 class="s6-heading">Partners &amp; Supporters</h2>
+    <p class="s6-subheading">ALIVE is trusted, funded, and endorsed by organisations across the voluntary, public, and
+      corporate sectors.</p>
+
+    <div class="s6-logo-grid">
+      <div class="s6-logo-cell">
+        <img src="Million-Hours-Fund.png" alt="National Lottery Million Hours Fund"
+          onerror="this.outerHTML='<span class=\'s6-logo-text\'>National Lottery<br>Million Hours Fund</span>'">
+      </div>
+      <div class="s6-logo-cell">
+        <img src="LoveBrum-HiddenHero.png" alt="LoveBrum"
+          onerror="this.outerHTML='<span class=\'s6-logo-text\'>LoveBrum</span>'">
+      </div>
+      <div class="s6-logo-cell">
+        <img src="England-Boxing.png" alt="England Boxing"
+          onerror="this.outerHTML='<span class=\'s6-logo-text\'>England Boxing</span>'">
+      </div>
+      <div class="s6-logo-cell">
+        <img src="logo-bbc-cin.png" alt="BBC Children in Need"
+          onerror="this.outerHTML='<span class=\'s6-logo-text\'>BBC Children in Need</span>'">
+      </div>
+      <div class="s6-logo-cell">
+        <img src="logo-pcc.png" alt="West Midlands PCC"
+          onerror="this.outerHTML='<span class=\'s6-logo-text\'>West Midlands PCC</span>'">
+      </div>
+      <div class="s6-logo-cell">
+        <img src="logo-asda.png" alt="ASDA Community Fund"
+          onerror="this.outerHTML='<span class=\'s6-logo-text\'>ASDA Community Fund</span>'">
+      </div>
+      <div class="s6-logo-cell">
+        <img src="logo-sport-england.png" alt="Sport England"
+          onerror="this.outerHTML='<span class=\'s6-logo-text\'>Sport England</span>'">
+      </div>
+      <div class="s6-logo-cell">
+        <img src="logo-krav4kids.png" alt="Krav4Kids"
+          onerror="this.outerHTML='<span class=\'s6-logo-text\'>Krav4Kids</span>'">
+      </div>
+    </div>
+
+    <div class="s6-cta-band">
+      <h3>What We Are Asking Avire To Do</h3>
+      <p>We are asking Avire to put this application in front of the landlords of Eagle Court and stand behind it. ALIVE
+        is a properly constituted, active organisation with a track record, funded partners, and committed donors ready
+        to move. The building gets a tenant. The community gets a resource. And Birmingham gets something it has needed
+        for a long time.</p>
+    </div>
+
+    <div class="s6-contact-grid">
+      <div class="s6-contact-box">
+        <h4>Point of Contact &mdash; This Application</h4>
+        <p class="s6-contact-name">Laura Mace</p>
+        <p><span class="s6-contact-label">Email:</span> <a href="mailto:laura.mace@alivewellnesscentre.org.uk">laura.mace@alivewellnesscentre.org.uk</a></p>
+        <p><span class="s6-contact-label">Telephone:</span> <a href="tel:08002465298">08002465298</a></p>
+      </div>
+    </div>
+
+    <h3 class="s6-support-heading">Voices of Support</h3>
+    <div class="s6-support-row">
+      <article class="s6-support-card">
+        <div class="s6-support-kicker">Letter of support</div>
+        <div class="s6-support-title">West Midlands Police and Crime Commissioner&rsquo;s Office</div>
+        <a class="s6-letter-thumb-link" href="WMPCC-ALIVE.pdf" aria-label="Open WMPCC letter of support">
+          <img class="s6-letter-thumb" src="WMPCC-ALIVE-thumb.jpg" alt="Thumbnail of the WMPCC letter of support">
+        </a>
+        <p class="s6-support-copy">Formal support from the office recognising Laura Mace&rsquo;s work and the public value of the ALIVE proposal.</p>
+        <a class="s6-support-action" href="WMPCC-ALIVE.pdf">Open letter of support</a>
+      </article>
+
+      <article class="s6-support-card">
+        <div class="s6-support-kicker">Video message of support</div>
+        <div class="s6-support-title">UB40</div>
+        <video class="s6-video" controls preload="metadata" playsinline poster="UB40-ALIVE-poster.jpg">
+          <source src="UB40-ALIVE.mp4" type="video/mp4">
+          <a href="UB40-ALIVE.mp4">Open UB40 video message of support</a>
+        </video>
+        <img class="s6-print-poster" src="UB40-ALIVE-poster.jpg" alt="UB40 video message of support poster">
+        <p class="s6-support-copy">A direct video message of support for Laura Mace and the ALIVE Wellness Centre CIC proposal.</p>
+        <a class="s6-support-action" href="UB40-ALIVE.mp4">Open video</a>
+      </article>
+    </div>
+
+    <div class="s6-footer">
+      <strong>ALIVE Wellness Centre CIC</strong>
+      <span>Section 6 &mdash; Partners, Supporters &amp; Next Steps</span>
+      <span>alivewellnesscentre.org.uk</span>
+    </div>
+
+  </div>
+
+</body>
+
+</html>
